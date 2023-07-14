@@ -1,0 +1,19 @@
+.nav-link {
+  font-size: large;
+  cursor: pointer;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: aquamarine;
+}
+
+.navbar-brand {
+  margin-left: 10px;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
