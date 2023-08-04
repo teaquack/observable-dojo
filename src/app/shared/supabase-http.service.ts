@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Cat } from './cat';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError, Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Cat } from '../cats/cat';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CatService {
+export class SupabaseHttpService {
   private supabaseUrl = `${environment.supabaseUrl}/rest/v1`;
   private supabaseKey = environment.supabaseKey;
 

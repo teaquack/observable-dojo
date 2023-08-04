@@ -7,8 +7,39 @@
         <div class='container'>
             <div class='row'>
                 <div class='col-md-12'>
-                    <span>Display the image of the Cat</span>
                     <!-- <img *ngIf='showImage' [src]='image' [title]='imageTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'> -->
+                    <div>
+                        {{displayCats()}}
+                    </div>
+                    <div>
+                        <div class="table-responsive">
+                            <table class="table mb-0"
+                                   *ngIf="cats$ | async as cats">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Breed</th>
+                                  <th>Color</th>
+                                  <th>Age</th>
+                                  <th>Birthdate</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let cat of cats">
+                                  <td>{{ cat.name }}</td>
+                                  <td>{{ cat.breed }}</td>
+                                  <td>{{ cat.color }}</td>
+                                  <td>{{ getAge(cat.birthdate) }}</td>
+                                  <td>{{ cat.birthdate }}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>
+                    <div class="alert alert-danger"
+                        *ngIf="errorMessage$ | async as errorMessage">
+                    {{ errorMessage }}
+                    </div>
                 </div>
             </div>
         </div>
