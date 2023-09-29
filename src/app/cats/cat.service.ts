@@ -17,6 +17,12 @@ export class CatService {
       catchError(this.handleError)
     );
 
+  // selectedCat$ = this.http.get<Cat>(`${this.supabaseUrl}/cats?id=eq.${1}`, { headers: { apikey: this.supabaseKey } })
+  //   .pipe(
+  //     tap(data => console.log('Selected Cat: ', JSON.stringify(data))),
+  //     catchError(this.handleError)
+  //   );
+
   constructor(private http: HttpClient) {   }
   
   private handleError(err: HttpErrorResponse): Observable<never> {

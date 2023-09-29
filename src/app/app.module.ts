@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DojoComponent } from './dojo/dojo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HandlersComponent } from './handlers/handlers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DojoComponent
+    DojoComponent,
+    HandlersComponent
   ],
   imports: [
     BrowserModule,
