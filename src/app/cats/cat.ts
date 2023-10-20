@@ -6,4 +6,5 @@ export interface Cat {
     color: string;
     birthdate: Date;
     imageUrl: string;
+    age: number;
 }

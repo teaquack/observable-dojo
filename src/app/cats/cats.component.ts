@@ -19,15 +19,4 @@ export class CatsComponent {
     return '😻😼😹🙀';
   }
 
-  getAge(birthdate: Date): number {
-    const today = new Date();
-    const birthdateDate = new Date(birthdate);
-    let age = today.getFullYear() - birthdateDate.getFullYear();
-    birthdateDate.setFullYear(today.getFullYear());
-    if (birthdateDate > today) {
-      age--;
-    }
-    return age;
-  }
-
 }

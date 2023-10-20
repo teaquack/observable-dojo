@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cat } from './cat';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError, Observable, throwError } from 'rxjs';
+import { tap, catchError, Observable, throwError, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,6 +14,12 @@ export class CatService {
   cats$ = this.http.get<Cat[]>(`${this.supabaseUrl}/cats`, { headers: { apikey: this.supabaseKey } })
     .pipe(
       tap(data => console.log('Cats: ', JSON.stringify(data))),
+      map(cats =>
+        cats.map(cat => ({
+          ...cat,
+          age: this.getAge(cat.birthdate)
+        } as Cat))
+      ),
       catchError(this.handleError)
     );
 
@@ -24,6 +30,17 @@ export class CatService {
   //   );
 
   constructor(private http: HttpClient) {   }
+
+  private getAge(birthdate: Date): number {
+    const today = new Date();
+    const birthdateDate = new Date(birthdate);
+    let age = today.getFullYear() - birthdateDate.getFullYear();
+    birthdateDate.setFullYear(today.getFullYear());
+    if (birthdateDate > today) {
+      age--;
+    }
+    return age;
+  }
   
   private handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage: string;
