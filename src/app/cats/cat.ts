@@ -1,3 +1,5 @@
+import { Handler } from "../handlers/handler";
+
 export interface Cat {
     id: number;
     created_at: Date;
@@ -7,4 +9,5 @@ export interface Cat {
     birthdate: Date;
     imageUrl: string;
     age: number;
+    handlers: Handler[];
 }

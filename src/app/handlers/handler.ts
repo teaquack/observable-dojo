@@ -8,4 +8,5 @@ export interface Handler {
     lastName: string;
     role: Role;
     imageUrl: string;
+    cat_id: number;
 }
