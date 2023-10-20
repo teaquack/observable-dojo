@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Cat } from './cat';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError, Observable, throwError, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { tap, catchError, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ErrorService } from '../shared/error.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class CatService {
           age: this.getAge(cat.birthdate)
         } as Cat))
       ),
-      catchError(this.handleError)
+      catchError(this.errorService.handleHttpError)
     );
 
   // selectedCat$ = this.http.get<Cat>(`${this.supabaseUrl}/cats?id=eq.${1}`, { headers: { apikey: this.supabaseKey } })
@@ -29,7 +30,7 @@ export class CatService {
   //     catchError(this.handleError)
   //   );
 
-  constructor(private http: HttpClient) {   }
+  constructor(private http: HttpClient, private errorService: ErrorService) {   }
 
   private getAge(birthdate: Date): number {
     const today = new Date();
@@ -40,18 +41,5 @@ export class CatService {
       age--;
     }
     return age;
-  }
-  
-  private handleError(err: HttpErrorResponse): Observable<never> {
-    let errorMessage: string;
-    if (err.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      // The backend returned an unsuccessful response code.
-      errorMessage = `Backend returned code ${err.status}: ${err.message}`;
-    }
-    console.error(err);
-    return throwError(() => errorMessage);
   }
 }
