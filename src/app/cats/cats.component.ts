@@ -30,24 +30,4 @@ export class CatsComponent {
     return age;
   }
 
-  testSurvey(): void {
-    this.loadSurveyMonkeyScript();
-  }
-
-  loadSurveyMonkeyScript(): void {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.async = true;
-    script.src = 'https://widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd3xyUJlWvMtw7U_2BKGrDbrODPuXXZ1EnPMYgSc1vyqaJ9.js';
-    script.id = 'smcx-sdk';
-    const surveyMonkeyDiv = document.getElementById('survey-monkey');
-    // const surveyMonkeyDiv = document.body;
-    if (surveyMonkeyDiv) {
-      surveyMonkeyDiv.appendChild(script);
-    } else {
-      // Handle the case where the element with id "survey-monkey" is not found
-      console.error('Element with id "survey-monkey" not found.');
-    }
-  }
-
 }
