@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Cat } from './cat';
-import { HttpClient } from '@angular/common/http';
 import { tap, catchError, map, combineLatest, shareReplay } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { ErrorService } from '../shared/error.service';
 import { HandlerService } from '../handlers/handler.service';
+import { HttpService } from '../shared/http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CatService {
-  private supabaseUrl = `${environment.supabaseUrl}/rest/v1`;
-  private supabaseKey = environment.supabaseKey;
-
-  cats$ = this.http.get<Cat[]>(`${this.supabaseUrl}/cats`, { headers: { apikey: this.supabaseKey } })
+  cats$ = this.httpService.get<Cat[]>('cats')
     .pipe(
       tap(data => console.log('Cats: ', JSON.stringify(data))),
       map(cats =>
@@ -45,7 +41,7 @@ export class CatService {
   //   );
 
   constructor(
-    private http: HttpClient,
+    private httpService: HttpService,
     private handlerService: HandlerService,
     private errorService: ErrorService
     ) {   }
