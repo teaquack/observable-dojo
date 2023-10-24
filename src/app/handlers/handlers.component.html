@@ -1,1 +1,6 @@
-<p>handlers works!</p>
+<!-- <div *ngIf="catHandlers$ | async as handlers; else loading"> -->
+<div *ngIf="catHandlers$ | async as handlers">
+    <div *ngFor="let handler of handlers">
+      {{ handler | json }}
+    </div>
+</div>
