@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+// @use '@angular/material' as mat;
+// @include mat.core();
+// $observables-dojo-primary: mat.define-palette(mat.$amber-palette);
+// $observables-dojo-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+// $observables-dojo-warn: mat.define-palette(mat.$red-palette);
+
+// $observables-dojo-theme: mat.define-light-theme((
+//   color: (
+//     primary: $observables-dojo-primary,
+//     accent: $observables-dojo-accent,
+//     warn: $observables-dojo-warn,
+//   )
+// ));
+// @include mat.all-component-themes($observables-dojo-theme);
+
+.card-header {
+ font-size: large;
+}
+
+.card {
+  margin-top: 10px
+}
+
+.table {
+  margin-top: 10px
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

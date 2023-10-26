@@ -1,40 +1,25 @@
 <div class='card'>
     <div class='card-header'>
-        {{pageTitle}}
+        {{pageTitle}} {{displayCats()}}
     </div>
 
-    <div class='card-body'>
+    <mat-card-content class='card-body'>
         <div class='container'>
             <div class='row'>
                 <div class='col-md-12'>
                     <!-- <img *ngIf='showImage' [src]='image' [title]='imageTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'> -->
-                    <div>
-                        {{displayCats()}}
-                    </div>
-                    <div>
-                        <div class="table-responsive">
-                            <table class="table mb-0"
-                                   *ngIf="cats$ | async as cats">
-                              <thead>
-                                <tr>
-                                  <th>Name</th>
-                                  <th>Breed</th>
-                                  <th>Color</th>
-                                  <th>Age</th>
-                                  <th>Birthdate</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr *ngFor="let cat of cats">
-                                  <td>{{ cat.name }}</td>
-                                  <td>{{ cat.breed }}</td>
-                                  <td>{{ cat.color }}</td>
-                                  <td>{{ cat.age }}</td>
-                                  <td>{{ cat.birthdate }}</td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
+                    <div class="card-container" *ngIf="cats$ | async as cats">
+                      <mat-card class="card" *ngFor="let cat of cats">
+                        <mat-card-header class="card-header">
+                          <mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="card-body">
+                          <p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>
+                          <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
+                          <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
+                          <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
+                        </mat-card-content>
+                      </mat-card>
                     </div>
                     <div class="alert alert-danger"
                         *ngIf="errorMessage$ | async as errorMessage">
@@ -43,5 +28,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </mat-card-content>
 </div>
