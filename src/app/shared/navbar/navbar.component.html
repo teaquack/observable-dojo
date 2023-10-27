@@ -1,30 +1,34 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand navbar-light bg-light">
 	<div class="container">
-	<a class="navbar-brand">{{pageTitle}}</a>
-	<!-- <h2>Observable Dojo</h2> -->
-	<ul class="navbar-nav">
-		<li class="nav-item">
-			<button type='button' class='btn btn-outline-warning' [routerLink]="['/dojo']" routerLinkActive="active">
-				Dojo
-			</button>
-		</li>
-		<li class="nav-item">
-			<button type='button' class='btn btn-outline-success' [routerLink]="['/cats']" routerLinkActive="active">
-				See the Cats!
-			</button>
-		</li>
-	</ul>
+		<a class="navbar-brand">{{pageTitle}}</a>
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<button type='button' class='btn btn-outline-warning' [routerLink]="['/dojo']"
+					routerLinkActive="active">
+					Dojo
+				</button>
+			</li>
+			<li class="nav-item">
+				<button type='button' class='btn btn-outline-success' [routerLink]="['/cats']"
+					routerLinkActive="active">
+					See the Cats!
+				</button>
+			</li>
+		</ul>
 	</div>
-</nav>
-<!-- <mat-toolbar class="custom-toolbar" color="primary">
-	<div class="toolbar-items">
-		<span>{{ pageTitle }}</span>
-		<button mat-button [routerLink]="['/dojo']" routerLinkActive="active">
-			Dojo
-		</button>
-		<button mat-button [routerLink]="['/cats']" routerLinkActive="active">
-			See the Cats!
-		</button>
+</nav> -->
+<mat-toolbar color="primary">
+	<div class="container">
+		<div class="toolbar-container">
+			<span class="page-title">{{ pageTitle }}</span>
+			<div class="button-container">
+				<button mat-raised-button color="accent" [routerLink]="['/cats']" routerLinkActive="active">
+					See the Cats!
+				</button>
+				<button mat-raised-button color="dojo" [routerLink]="['/dojo']" routerLinkActive="active">
+					Dojo
+				</button>
+			</div>
+		</div>
 	</div>
-	<span class="toolbar-title">Observable Dojo</span>
-</mat-toolbar> -->
+</mat-toolbar>

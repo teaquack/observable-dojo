@@ -19,4 +19,9 @@ export class CatsComponent {
     return '😻😼😹🙀';
   }
 
+  goToCatDetails(): void {
+	console.log('go to cat details');
+	
+  }
+
 }

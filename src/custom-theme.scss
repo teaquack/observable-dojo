@@ -17,6 +17,7 @@ $custom-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $custom-warn: mat.define-palette(mat.$red-palette);
+$custom-dojo: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -25,16 +26,9 @@ $custom-theme: mat.define-light-theme((
     primary: $custom-primary,
     accent: $custom-accent,
     warn: $custom-warn,
+	dojo: $custom-dojo
   )
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include mat.all-component-themes($custom-theme);
 
-// Buttons
-.custom-accent-button {
-	// background-color: mat-color($custom-accent);
-	color: goldenrod;
-}
