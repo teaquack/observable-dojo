@@ -1,28 +1,30 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
-    <a class="navbar-brand">{{pageTitle}}</a>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <button type='button' class='btn btn-outline-warning'
-           [routerLink]="['/dojo']"
-           routerLinkActive="active">
-            Dojo
-        </button>
-      </li>
-      <li class="nav-item">
-        <button type='button' class='btn btn-outline-success'
-           [routerLink]="['/cats']"
-           routerLinkActive="active">
-           See the Cats!
-        </button>
-      </li>
-    </ul>
-
-    <div class='container'>
-      <div class='row'>
-        <div class='col-md-12'>
-          <h1>Observable Dojo</h1>
-        </div>
-      </div>
-    </div>
-  </nav>
-  
+	<div class="container">
+	<a class="navbar-brand">{{pageTitle}}</a>
+	<!-- <h2>Observable Dojo</h2> -->
+	<ul class="navbar-nav">
+		<li class="nav-item">
+			<button type='button' class='btn btn-outline-warning' [routerLink]="['/dojo']" routerLinkActive="active">
+				Dojo
+			</button>
+		</li>
+		<li class="nav-item">
+			<button type='button' class='btn btn-outline-success' [routerLink]="['/cats']" routerLinkActive="active">
+				See the Cats!
+			</button>
+		</li>
+	</ul>
+	</div>
+</nav>
+<!-- <mat-toolbar class="custom-toolbar" color="primary">
+	<div class="toolbar-items">
+		<span>{{ pageTitle }}</span>
+		<button mat-button [routerLink]="['/dojo']" routerLinkActive="active">
+			Dojo
+		</button>
+		<button mat-button [routerLink]="['/cats']" routerLinkActive="active">
+			See the Cats!
+		</button>
+	</div>
+	<span class="toolbar-title">Observable Dojo</span>
+</mat-toolbar> -->

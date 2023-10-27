@@ -4,16 +4,16 @@ import { Observable } from 'rxjs';
 import { HandlerService } from './handler.service';
 
 @Component({
-  selector: 'dojo-handlers',
-  templateUrl: './handlers.component.html',
-  styleUrls: ['./handlers.component.css']
+	selector: 'dojo-handlers',
+	templateUrl: './handlers.component.html',
+	styleUrls: ['./handlers.component.css']
 })
-export class HandlersComponent implements OnInit {  
-  catHandlers$!: Observable<Handler[]>;
-  
-  constructor(private handlerService: HandlerService) {}
+export class HandlersComponent implements OnInit {
+	catHandlers$!: Observable<Handler[]>;
 
-  ngOnInit(): void {
-    this.catHandlers$ = this.handlerService.getCatHandlers(1);
-  }
+	constructor(private handlerService: HandlerService) { }
+
+	ngOnInit(): void {
+		this.catHandlers$ = this.handlerService.getCatHandlers(1);
+	}
 }

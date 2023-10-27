@@ -12,24 +12,29 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$observables-dojo-primary: mat.define-palette(mat.$amber-palette);
-$observables-dojo-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+$custom-primary: mat.define-palette(mat.$teal-palette);
+$custom-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$observables-dojo-warn: mat.define-palette(mat.$red-palette);
+$custom-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$observables-dojo-theme: mat.define-light-theme((
+$custom-theme: mat.define-light-theme((
   color: (
-    primary: $observables-dojo-primary,
-    accent: $observables-dojo-accent,
-    warn: $observables-dojo-warn,
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,
   )
 ));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($observables-dojo-theme);
+@include mat.all-component-themes($custom-theme);
 
+// Buttons
+.custom-accent-button {
+	// background-color: mat-color($custom-accent);
+	color: goldenrod;
+}

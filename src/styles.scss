@@ -5,8 +5,8 @@
 // For more information: https://material.angular.io/guide/theming
 // @use '@angular/material' as mat;
 // @include mat.core();
-// $observables-dojo-primary: mat.define-palette(mat.$amber-palette);
-// $observables-dojo-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400);
+// $observables-dojo-primary: mat.define-palette(mat.$teal-palette);
+// $observables-dojo-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 // $observables-dojo-warn: mat.define-palette(mat.$red-palette);
 
 // $observables-dojo-theme: mat.define-light-theme((
@@ -19,20 +19,52 @@
 // @include mat.all-component-themes($observables-dojo-theme);
 
 .card-header {
- font-size: large;
+	font-size: large;
 }
 
 .card {
-  margin-top: 10px
+	margin-top: 10px;
+}
+
+.card-body {
+	margin-top: 10px;
 }
 
 .table {
-  margin-top: 10px
+	margin-top: 10px;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+// Angular Material Toolbar / Navigation bar
+// .toolbar-title {
+// 	font-size: 3em;
+// }
+
+// .custom-toolbar {
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// 	padding: 0 16px;
+// 	height: 64px;
+// 	background-color: #3f51b5;
+// 	color: white;
+// }
+
+// .toolbar-items {
+// 	display: flex;
+// 	gap: 8px;
+// }

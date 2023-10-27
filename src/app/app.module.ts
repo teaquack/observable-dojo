@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DojoComponent } from './dojo/dojo.component';
 import { HandlersComponent } from './handlers/handlers.component';
+import { MaterialModule } from './shared/material.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HandlersComponent } from './handlers/handlers.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+	MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
