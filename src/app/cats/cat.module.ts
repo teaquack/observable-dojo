@@ -17,7 +17,11 @@ import { CatDetailsComponent } from '../cat-details/cat-details.component';
       {
         path: '',
         component: CatsComponent
-      }
+      },
+	  {
+		path: ':id',
+		component: CatDetailsComponent
+	  }
     ])
   ]
 })

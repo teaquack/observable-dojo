@@ -1,15 +1,13 @@
-<div class='card'>
-    <div class='card-header'>
+<mat-card class="card">
+    <mat-card-header class="card-header">
         {{pageTitle}}
-    </div>
+    </mat-card-header>
 
-    <div class='card-body'>
-        <div class='container'>
-            <div class='row'>
-                <div class='col-md-12'>
-                    <span>Here, you will be able to play with cats and other observable animals.</span>
-                </div>
-            </div>
+    <mat-card-content class="card-body">
+        <div class="custom-container">
+            <mat-grid-list class="grid-list" cols='3'>
+				<p>Here, you will be able to play with cats and other observable animals.</p>
+            </mat-grid-list>
         </div>
-    </div>
-</div>
+    </mat-card-content>
+</mat-card>

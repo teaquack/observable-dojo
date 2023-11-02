@@ -1,10 +1,10 @@
-<mat-card class='card'>
-    <mat-card-header class='card-header'>
+<mat-card class="card">
+    <mat-card-header class="card-header">
         {{pageTitle}} {{displayCats()}}
     </mat-card-header>
 
-    <mat-card-content class='card-body'>
-        <mat-grid-list cols='3'>
+    <mat-card-content class="card-body">
+        <mat-grid-list class="grid-list" cols="3">
             <!-- <img *ngIf='showImage' [src]='image' [title]='imageTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'> -->
             <div class="card-container" *ngIf="cats$ | async as cats">
               <mat-card class="card" *ngFor="let cat of cats">
@@ -16,7 +16,7 @@
                   <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
                   <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
                   <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
-				  <button mat-raised-button color="accent" (click)="goToCatDetails()">See Cat</button>
+				  <button mat-raised-button color="accent" (click)="goToCatDetails(cat.id)">See Cat</button>
                 </mat-card-content>
               </mat-card>
             </div>

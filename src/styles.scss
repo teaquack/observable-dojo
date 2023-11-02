@@ -1,33 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
+// @import "~bootstrap/dist/css/bootstrap.min.css";
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-// @use '@angular/material' as mat;
-// @include mat.core();
-// $observables-dojo-primary: mat.define-palette(mat.$teal-palette);
-// $observables-dojo-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
-// $observables-dojo-warn: mat.define-palette(mat.$red-palette);
-
-// $observables-dojo-theme: mat.define-light-theme((
-//   color: (
-//     primary: $observables-dojo-primary,
-//     accent: $observables-dojo-accent,
-//     warn: $observables-dojo-warn,
-//   )
-// ));
-// @include mat.all-component-themes($observables-dojo-theme);
-
-.card-header {
-	font-size: large;
-}
+// .card-header {
+// 	font-size: large;
+// 	background-color: rgb(244, 244, 244);
+// }
 
 .card {
 	margin-top: 10px;
+	background-color: purple;
+}
+
+.mat-card {
+	padding: 0 !important;
 }
 
 .card-body {
 	margin-top: 10px;
+	background-color: rgb(244, 244, 244);
+}
+
+.grid-list {
+	// background-color: aquamarine;
 }
 
 .table {
@@ -54,6 +48,10 @@ a {
 	gap: 16px;
 }
 
+.button-text {
+	font-size: 1.3em;
+}
+
 html,
 body {
 	height: 100%;
@@ -62,4 +60,15 @@ body {
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
+	background-color: rgb(244, 244, 244);
+}
+
+.custom-container {
+	width: 100%;
+	max-width: 1200px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	// background-color: blue;
 }

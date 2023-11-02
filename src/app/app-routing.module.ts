@@ -5,7 +5,6 @@ import { DojoComponent } from './dojo/dojo.component';
 @NgModule({
   imports: [RouterModule.forRoot([
     { path: 'welcome', component: DojoComponent},
-    // { path: 'cats', component:  CatsComponent},
     {
       path: 'cats',
       loadChildren: () => import('./cats/cat.module').then(m => m.CatModule)
