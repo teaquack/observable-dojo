@@ -45,7 +45,11 @@ a {
 
 .button-container {
 	display: flex;
-	gap: 16px;
+	gap: 2px;
+}
+
+.card-button {
+	font-size: 0.9em;
 }
 
 .button-text {

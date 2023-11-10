@@ -25,7 +25,7 @@ export class CatsComponent {
 	}
 
 	goToCatDetails(cat: Cat): void {
-		console.log('go to cat details: ', cat.id);
+		// console.log('go to cat details: ', cat.id);
 		this.catService.setSelectedCat(cat.id);
 		this.router.navigateByUrl(`/cats/${cat.id}`);
 	}
