@@ -1,1 +1,12 @@
-<p>cat-details works!</p>
+<mat-card class="card" *ngIf="selectedCat$ | async as cat">
+	<mat-card-header class="card-header">
+		{{pageTitle}} for {{cat?.name}}
+	</mat-card-header>
+
+	<mat-card-content class="card-body">
+		<p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>
+		<p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
+		<p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
+		<p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
+	</mat-card-content>
+</mat-card>

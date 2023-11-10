@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CatsComponent } from './cats.component';
-import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
 import { CatDetailsComponent } from '../cat-details/cat-details.component';
+import { CatRoutingModule } from './cat-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,16 +13,7 @@ import { CatDetailsComponent } from '../cat-details/cat-details.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: CatsComponent
-      },
-	  {
-		path: ':id',
-		component: CatDetailsComponent
-	  }
-    ])
+	CatRoutingModule
   ]
 })
 export class CatModule { }

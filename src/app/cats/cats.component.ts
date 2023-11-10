@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CatService } from './cat.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { Cat } from './cat';
 
 @Component({
 	selector: 'dojo-cats',
@@ -23,8 +24,9 @@ export class CatsComponent {
 		return '😻😼😹🙀';
 	}
 
-	goToCatDetails(catId: number): void {
-		console.log('go to cat details: ', catId);
-		this.router.navigateByUrl(`/cats/${catId}`);
+	goToCatDetails(cat: Cat): void {
+		console.log('go to cat details: ', cat.id);
+		this.catService.setSelectedCat(cat.id);
+		this.router.navigateByUrl(`/cats/${cat.id}`);
 	}
 }
