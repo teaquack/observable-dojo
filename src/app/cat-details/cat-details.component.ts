@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatService } from '../cats/cat.service';
-import { Subject, take } from 'rxjs';
+import { Subject, combineLatest, map, take } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,18 +19,26 @@ export class CatDetailsComponent implements OnInit {
 		private route: ActivatedRoute
 	) { };
 
-	ngOnInit() {
-		this.catService.selectedCat$.pipe(take(1)).subscribe(selectedCat => {
-			if (!selectedCat) {
-				this.route.params.subscribe(params => {
-					console.log('params ', JSON.stringify(params));
+	ngOnInit(): void {
+		combineLatest([this.route.params, this.selectedCat$])
+			.pipe(
+				map(([params, selectedCat]) => ({ params, selectedCat })),
+				take(1)
+			)
+			.subscribe(({ params, selectedCat }) => {
+				if (!selectedCat) {
 					const catId = +params['id'];
-					console.log('catId ', catId);
 					if (!isNaN(catId)) {
-						this.catService.setSelectedCat(catId);
+						this.catService.cats$.pipe(
+							take(1)
+						).subscribe(cats => {
+							const cat = cats.find(c => c.id === catId);
+							if (cat) {
+								this.catService.setSelectedCat(catId);
+							}
+						});
 					}
-				});
-			}
-		});
+				}
+			});
 	}
 }

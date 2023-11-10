@@ -4,7 +4,6 @@ import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorS
 import { ErrorService } from '../shared/error.service';
 import { HandlerService } from '../handlers/handler.service';
 import { HttpService } from '../shared/http.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -12,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CatService {
 	cats$ = this.httpService.get<Cat[]>('cats')
 		.pipe(
-			tap(data => console.log('Cats: ', JSON.stringify(data))),
+			// tap(data => console.log('Cats: ', JSON.stringify(data))),
 			map(cats =>
 				cats.map(cat => ({
 					...cat,
@@ -37,26 +36,6 @@ export class CatService {
 	// 	shareReplay(1)
 	// );
 
-	
-		// .pipe(
-		// 	switchMap(selectedCatId => {
-		// 		console.log('selectedCatId: ', selectedCatId);
-		// 		if (selectedCatId === null) {
-		// 			return this.route.params.pipe(
-		// 				map(params => +params['id']),
-		// 				tap(routeCatId => {
-		// 					console.log('routeCatId: ', routeCatId);
-		// 					if (!isNaN(routeCatId)) {
-		// 						this.setSelectedCat(routeCatId);
-		// 					}
-		// 				})
-		// 			)
-		// 		} else {
-		// 			return of(selectedCatId);
-		// 		}
-		// 	})
-		// )
-
 	private selectedCatSubject = new BehaviorSubject<number>(0);
 	selectedCatAction$ = this.selectedCatSubject.asObservable();
 
@@ -67,7 +46,7 @@ export class CatService {
 		map(([cats, selectedCatId]) =>
 			cats.find(cat => cat.id === selectedCatId)
 		),
-		tap(cat => console.log('selectedCat', cat)),
+		// tap(cat => console.log('selectedCat', cat)),
 		shareReplay(1)
 	);
 
@@ -91,12 +70,8 @@ export class CatService {
 	constructor(
 		private httpService: HttpService,
 		private handlerService: HandlerService,
-		private errorService: ErrorService,
-		private router: Router
-	) {
-		const result = router.routerState.snapshot.root?.children[1]?.url[0]?.path;
-		console.log('result ', result);
-	}
+		private errorService: ErrorService
+	) {	}
 
 	addCat(newCat?: Cat) {
 		if (newCat != null) {
