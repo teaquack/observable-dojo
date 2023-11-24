@@ -20,7 +20,7 @@ import { MaterialModule } from './shared/material.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-	MaterialModule
+	  MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

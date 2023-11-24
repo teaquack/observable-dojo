@@ -39,6 +39,10 @@ export class CatService {
 	private selectedCatSubject = new BehaviorSubject<number>(0);
 	selectedCatAction$ = this.selectedCatSubject.asObservable();
 
+	setSelectedCat(catId: number): void {
+		this.selectedCatSubject.next(catId);
+	}
+
 	selectedCat$ = combineLatest([
 		this.cats$,
 		this.selectedCatAction$
@@ -78,10 +82,6 @@ export class CatService {
 			this.catInsertedSubject.next(newCat);
 			// add cat to the API - database
 		}
-	}
-
-	setSelectedCat(catId: number): void {
-		this.selectedCatSubject.next(catId);
 	}
 
 	private getAge(birthdate: Date): number {

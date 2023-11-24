@@ -3,11 +3,9 @@
         {{pageTitle}} {{displayCats()}}
     </mat-card-header>
 
-    <mat-card-content class="card-body">
-        <mat-grid-list class="grid-list" cols="3">
-            <!-- <img *ngIf='showImage' [src]='image' [title]='imageTitle' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'> -->
-            <div class="card-container" *ngIf="cats$ | async as cats">
-              <mat-card class="card" *ngFor="let cat of cats">
+    <mat-card-content class="card-body cats-card-body">
+            <ng-container *ngIf="cats$ | async as cats">
+              <mat-card class="card cat-card" *ngFor="let cat of cats">
                 <mat-card-header class="card-header">
                   <mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
                 </mat-card-header>
@@ -16,14 +14,13 @@
                   <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
                   <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
                   <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
-				  <button mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">See Cat</button>
+				          <button mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">See Cat</button>
                 </mat-card-content>
               </mat-card>
-            </div>
+            </ng-container>
             <div class="alert alert-danger"
                 *ngIf="errorMessage$ | async as errorMessage">
             {{ errorMessage }}
             </div>
-        </mat-grid-list>
     </mat-card-content>
 </mat-card>

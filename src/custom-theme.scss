@@ -12,23 +12,37 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$custom-primary: mat.define-palette(mat.$cyan-palette);
-$custom-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$dojo-primary: mat.define-palette(mat.$blue-palette);
+$dojo-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+$dojo-warn: mat.define-palette(mat.$red-palette);
 
-// The warn palette is optional (defaults to red).
-$custom-warn: mat.define-palette(mat.$red-palette);
-$custom-dojo: mat.define-palette(mat.$blue-palette, A200, A100, A400);
+$forest-primary: mat.define-palette(mat.$green-palette);
+$forest-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+$forest-warn: mat.define-palette(mat.$purple-palette, A200, A100, A400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$custom-theme: mat.define-light-theme((
+$custom-dojo-theme: mat.define-light-theme((
   color: (
-    primary: $custom-primary,
-    accent: $custom-accent,
-    warn: $custom-warn,
-	dojo: $custom-dojo
+    primary: $dojo-primary,
+    accent: $dojo-accent,
+    warn: $dojo-warn
   )
 ));
 
-@include mat.all-component-themes($custom-theme);
+$custom-forest-theme: mat.define-light-theme((
+  color: (
+    primary: $forest-primary,
+    accent: $forest-accent,
+    warn: $forest-warn,
+  )
+));
+
+// .custom-dojo {
+  @include mat.all-component-themes($custom-dojo-theme);
+// }
+
+// .custom-forest {
+//   @include mat.all-component-themes($custom-forest-theme);
+// }
 
