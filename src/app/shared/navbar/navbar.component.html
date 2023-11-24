@@ -13,10 +13,10 @@
 		</div>
 	</div>
 </mat-toolbar>
-<mat-toolbar class="custom-dojo secondary-navbar">
+<mat-toolbar class="custom-dojo secondary-navbar" *ngIf='showDetailsNavbar'>
 	<div class="custom-container">
 		<div class="button-container">
-			<button class="custom-dojo secondary-menu-button" mat-raised-button color="primary" [routerLink]="['/cats']" routerLinkActive="active">
+			<button class="custom-dojo secondary-menu-button" mat-raised-button color="primary" [routerLink]="['/:catId/handlers']" routerLinkActive="active">
 				<span class="button-text">Cat Handlers</span>
 			</button>
 		</div>

@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Cat } from './cat';
-import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of } from 'rxjs';
+import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
 import { HandlerService } from '../handlers/handler.service';
 import { HttpService } from '../shared/http.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class CatService {
+	private selectedCatSubject = new BehaviorSubject<number>(0);
+	selectedCatAction$ = this.selectedCatSubject.asObservable();
+
+	selectCat(catId: number): void {
+		this.selectedCatSubject.next(catId);
+	}
+
 	cats$ = this.httpService.get<Cat[]>('cats')
 		.pipe(
 			// tap(data => console.log('Cats: ', JSON.stringify(data))),
@@ -35,14 +43,6 @@ export class CatService {
 	// 	),
 	// 	shareReplay(1)
 	// );
-
-	private selectedCatSubject = new BehaviorSubject<number>(0);
-	selectedCatAction$ = this.selectedCatSubject.asObservable();
-
-	setSelectedCat(catId: number): void {
-		this.selectedCatSubject.next(catId);
-	}
-
 	selectedCat$ = combineLatest([
 		this.cats$,
 		this.selectedCatAction$
@@ -74,7 +74,7 @@ export class CatService {
 	constructor(
 		private httpService: HttpService,
 		private handlerService: HandlerService,
-		private errorService: ErrorService
+		private errorService: ErrorService,
 	) {	}
 
 	addCat(newCat?: Cat) {

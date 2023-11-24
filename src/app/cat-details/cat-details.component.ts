@@ -14,31 +14,34 @@ export class CatDetailsComponent implements OnInit {
 	pageTitle = 'Cat Details';
 	selectedCat$ = this.catService.selectedCat$;
 
+	catId$ = combineLatest([
+		this.route.params,
+		this.selectedCat$
+	]).pipe(
+		map(([params, selectedCat]) => ({ params, selectedCat })),
+		take(1)
+	);
+
 	constructor(
 		private catService: CatService,
 		private route: ActivatedRoute
 	) { };
 
 	ngOnInit(): void {
-		combineLatest([this.route.params, this.selectedCat$])
-			.pipe(
-				map(([params, selectedCat]) => ({ params, selectedCat })),
-				take(1)
-			)
-			.subscribe(({ params, selectedCat }) => {
-				if (!selectedCat) {
-					const catId = +params['id'];
-					if (!isNaN(catId)) {
-						this.catService.cats$.pipe(
-							take(1)
-						).subscribe(cats => {
-							const cat = cats.find(c => c.id === catId);
-							if (cat) {
-								this.catService.setSelectedCat(catId);
-							}
-						});
-					}
+		this.catId$.subscribe(({ params, selectedCat }) => {
+			if (!selectedCat) {
+				const catId = +params['id'];
+				if (!isNaN(catId)) {
+					this.catService.cats$.pipe(
+						take(1)
+					).subscribe(cats => {
+						const cat = cats.find(c => c.id === catId);
+						if (cat) {
+							this.catService.selectCat(catId);
+						}
+					});
 				}
-			});
+			}
+		});
 	}
 }
