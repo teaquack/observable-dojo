@@ -13,12 +13,13 @@
 		</div>
 	</div>
 </mat-toolbar>
-<mat-toolbar class="custom-dojo secondary-navbar" *ngIf='showDetailsNavbar'>
+<mat-toolbar class="custom-dojo secondary-navbar" *ngIf="selectedCat$ | async as cat">
 	<div class="custom-container">
 		<div class="button-container">
-			<button class="custom-dojo secondary-menu-button" mat-raised-button color="primary" [routerLink]="['/:catId/handlers']" routerLinkActive="active">
+			<button class="custom-dojo secondary-menu-button" mat-raised-button color="primary" [routerLink]="['/cats', cat.id, 'handlers']" routerLinkActive="active">
 				<span class="button-text">Cat Handlers</span>
 			</button>
 		</div>
 	</div>
+	<div class="container">Hello {{cat.name}}! Your Id is {{ cat.id }}</div>
 </mat-toolbar>

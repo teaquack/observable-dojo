@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Handler } from './handler';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { HandlerService } from './handler.service';
 
 @Component({
@@ -9,6 +9,9 @@ import { HandlerService } from './handler.service';
 	styleUrls: ['./handlers.component.css']
 })
 export class HandlersComponent implements OnInit {
+	private errorMessageSubject = new Subject<string>();
+	errorMessage$ = this.errorMessageSubject.asObservable();
+	pageTitle = 'Your Handlers';
 	catHandlers$!: Observable<Handler[]>;
 
 	constructor(private handlerService: HandlerService) { }
