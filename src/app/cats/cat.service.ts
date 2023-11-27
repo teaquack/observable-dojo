@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Cat } from './cat';
 import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
-import { HandlerService } from '../handlers/handler.service';
 import { HttpService } from '../shared/http.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -29,20 +28,6 @@ export class CatService {
 			catchError(this.errorService.handleHttpError)
 		);
 
-	// This one isn't good b/c it would pull handlers for other cats,
-	// it needs to be scoped to only get handlers for the selected cat or for cats
-	// catsWithHandlers$ = combineLatest([
-	// 	this.cats$,
-	// 	this.handlerService.handlers$
-	// ]).pipe(
-	// 	map(([cats, handlers]) =>
-	// 		cats.map(cat => ({
-	// 			...cat,
-	// 			handlers: handlers.filter(h => cat.id === h.cat_id) ?? []
-	// 		} as Cat))
-	// 	),
-	// 	shareReplay(1)
-	// );
 	selectedCat$ = combineLatest([
 		this.cats$,
 		this.selectedCatAction$
@@ -53,7 +38,7 @@ export class CatService {
 		// tap(cat => console.log('selectedCat', cat)),
 		shareReplay(1)
 	);
-
+	
 	// selectedCat$ = this.httpService.get<Cat>(`cats?id=eq.${1}`)
 	// 	.pipe(
 	// 		tap(data => console.log('Selected Cat: ', JSON.stringify(data))),
@@ -73,7 +58,6 @@ export class CatService {
 
 	constructor(
 		private httpService: HttpService,
-		private handlerService: HandlerService,
 		private errorService: ErrorService,
 	) {	}
 

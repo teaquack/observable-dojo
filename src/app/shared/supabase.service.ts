@@ -38,6 +38,13 @@ export class SupabaseService {
     return await this.supabase.from(table_name).select(select);
   }
 
+  async getFromTableFor(table_name: string, selectBy: string, selectId: number, select: string = '*') {
+		return await this.supabase
+		.from(table_name)
+		.select(select)
+		.eq(selectBy, selectId);
+  }
+
   async fetchTodos() {
     return await this.supabase.from('todos').select('*').order('id', { ascending: false });
   }
