@@ -38,12 +38,6 @@ export class CatService {
 		// tap(cat => console.log('selectedCat', cat)),
 		shareReplay(1)
 	);
-	
-	// selectedCat$ = this.httpService.get<Cat>(`cats?id=eq.${1}`)
-	// 	.pipe(
-	// 		tap(data => console.log('Selected Cat: ', JSON.stringify(data))),
-	// 		catchError(this.errorService.handleHttpError)
-	// 	);
 
 	private catInsertedSubject = new Subject<Cat>();
 	catInsertedAction$ = this.catInsertedSubject.asObservable();
@@ -59,7 +53,24 @@ export class CatService {
 	constructor(
 		private httpService: HttpService,
 		private errorService: ErrorService
-	) {	}
+	) { }
+
+	handleCatSelection(catId: number): Observable<void | null> {
+		if (!isNaN(catId)) {
+			return this.cats$.pipe(
+				take(1),
+				map((cats) => cats.find((cat) => cat.id === catId)),
+				tap((cat) => {
+					if (cat) {
+						this.selectCat(catId);
+					}
+				}),
+				map(() => null)
+			);
+		} else {
+			return of(null);
+		}
+	}
 
 	addCat(newCat?: Cat) {
 		if (newCat != null) {
@@ -67,24 +78,6 @@ export class CatService {
 			// add cat to the API - database
 		}
 	}
-
-	handleCatIdSelection(routeParams: { id: string }): Observable<void | null> {
-		const catId = +routeParams.id;
-		if (!isNaN(catId)) {
-		  return this.cats$.pipe(
-			take(1),
-			map((cats) => cats.find((cat) => cat.id === catId)),
-			tap((cat) => {
-			  if (cat) {
-				this.selectCat(catId);
-			  }
-			}),
-			map(() => null)
-		  );
-		} else {
-		  return of(null);
-		}
-	  }
 
 	private getAge(birthdate: Date): number {
 		const today = new Date();

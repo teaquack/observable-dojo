@@ -1,22 +1,32 @@
 <!-- <div *ngIf="catHandlers$ | async as handlers; else loading"> -->
-  <mat-card class="card" *ngIf="{ handlers: catHandlers$ | async, cat: selectedCat$ | async } as data">
-    <!-- <mat-card-header *ngIf="data.cat" class="card-header">
-      Handlers for {{data.cat.name}}
-    </mat-card-header> -->
-	<div *ngIf="data.handlers && data.handlers.length <= 0">
-		<mat-card-content class="card-body">
-			<p class="card-text">{{data.cat?.name}} does not have any handlers</p>
-		</mat-card-content>
-	</div>
+<mat-card class="card">
+    <mat-card-header class="card-header">
+        {{pageTitle}}
+    </mat-card-header>
 
-    <div *ngFor="let handler of data.handlers">
-      <mat-card-header class="card-header">
-        {{handler.firstName}} {{handler.lastName}}
-      </mat-card-header>
-      
-      <mat-card-content class="card-body">
-        <p class="card-text"><strong>Role:</strong> {{ handler.role }}</p>
-        <p class="card-text"><strong>Started working on:</strong> {{ handler.created_at | date }}</p>
-      </mat-card-content>
-    </div>
+    <mat-card-content class="card-body cats-card-body">
+        <ng-container *ngIf="{ handlers: catHandlers$ | async, cat: selectedCat$ | async } as data">
+            <ng-container *ngIf="data.handlers && data.handlers.length <= 0">
+                <mat-card-content class="card-body">
+                    <p class="card-text">{{data.cat?.name}} does not have any handlers</p>
+                </mat-card-content>
+            </ng-container>
+
+            <mat-card class="card cat-card" *ngFor="let handler of data.handlers">
+                <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">{{handler.firstName}} {{handler.lastName}}</mat-card-title>
+                </mat-card-header>
+                
+                <mat-card-content class="card-body">
+                    <p class="card-text"><strong>Role:</strong> {{ handler.role }}</p>
+                    <p class="card-text"><strong>Started working on:</strong> {{ handler.created_at | date }}</p>
+                </mat-card-content>
+            </mat-card>
+        </ng-container>
+        <div class="alert alert-danger"
+            *ngIf="errorMessage$ | async as errorMessage">
+        {{ errorMessage }}
+        </div>
+    </mat-card-content>
 </mat-card>
+

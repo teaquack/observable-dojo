@@ -22,7 +22,7 @@ export class CatDetailsComponent implements OnInit {
 	ngOnInit(): void {
 		this.route.params.pipe(
 			take(1),
-			switchMap((params) => this.catService.handleCatIdSelection(params as {id: string}))
+			switchMap((params) => this.catService.handleCatSelection(+params['id']))
 		).subscribe();
 	}
 }

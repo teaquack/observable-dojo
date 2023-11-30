@@ -9,7 +9,7 @@
 .cat-card {
     flex-basis: calc(50% - 20px);
     min-width: 300px;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    box-sizing: border-box;
     margin: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
