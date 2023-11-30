@@ -58,7 +58,7 @@ export class CatService {
 
 	constructor(
 		private httpService: HttpService,
-		private errorService: ErrorService,
+		private errorService: ErrorService
 	) {	}
 
 	addCat(newCat?: Cat) {
@@ -67,6 +67,24 @@ export class CatService {
 			// add cat to the API - database
 		}
 	}
+
+	handleCatIdSelection(routeParams: { id: string }): Observable<void | null> {
+		const catId = +routeParams.id;
+		if (!isNaN(catId)) {
+		  return this.cats$.pipe(
+			take(1),
+			map((cats) => cats.find((cat) => cat.id === catId)),
+			tap((cat) => {
+			  if (cat) {
+				this.selectCat(catId);
+			  }
+			}),
+			map(() => null)
+		  );
+		} else {
+		  return of(null);
+		}
+	  }
 
 	private getAge(birthdate: Date): number {
 		const today = new Date();

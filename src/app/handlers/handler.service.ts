@@ -22,13 +22,18 @@ export class HandlerService {
 		tap(data => {
 			console.log('selected cat in handler service: ', data)
 		}),
-		switchMap(catId => {
-		  const url = `handlers?id=eq.1`; // Adjust this based on your Supabase schema
-	  
-		  return this.httpService.get<Handler[]>(url).pipe(
-			tap(data => console.log(`Cat Handlers for Cat ID ${catId}: `, JSON.stringify(data))),
-			catchError(this.errorService.handleHttpError)
-		  );
+		switchMap(cat => {
+			const catId = cat?.id ?? 0;
+			if (catId === 0) {
+				console.error('No cat selected');
+				return [];
+			}
+			const url = `handlers?cat_id=eq.${catId}`; // Adjust this based on your Supabase schema
+		
+			return this.httpService.get<Handler[]>(url).pipe(
+				tap(data => console.log(`Cat Handlers for Cat ID ${catId}: `, JSON.stringify(data))),
+				catchError(this.errorService.handleHttpError)
+			);
 		}),
 		shareReplay(1)
 	  );
