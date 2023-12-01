@@ -21,7 +21,10 @@ export class CatDetailsComponent implements OnInit {
 	ngOnInit(): void {
 		this.route.params.pipe(
 			take(1),
-			switchMap((params) => this.catService.handleCatSelection(+params['id']))
+			switchMap((params) => {
+				const catId = +params['id'];
+				return this.catService.handleCatSelection(catId);
+			})
 		).subscribe();
 	}
 }

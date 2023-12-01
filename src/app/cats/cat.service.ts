@@ -3,7 +3,6 @@ import { Cat } from './cat';
 import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
 import { HttpService } from '../shared/http.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -11,10 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 export class CatService {
 	private selectedCatSubject = new BehaviorSubject<number>(0);
 	selectedCatAction$ = this.selectedCatSubject.asObservable();
-
-	selectCat(catId: number): void {
-		this.selectedCatSubject.next(catId);
-	}
 
 	cats$ = this.httpService.get<Cat[]>('cats')
 		.pipe(
@@ -27,6 +22,10 @@ export class CatService {
 			),
 			catchError(this.errorService.handleHttpError)
 		);
+		
+	selectCat(catId: number): void {
+		this.selectedCatSubject.next(catId);
+	}
 
 	selectedCat$ = combineLatest([
 		this.cats$,

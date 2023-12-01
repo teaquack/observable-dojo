@@ -10,13 +10,12 @@ import { SupabaseService } from '../shared/supabase.service';
 	providedIn: 'root'
 })
 export class HandlerService {
-
-	handlers$ = this.httpService.get<Handler[]>('handlers')
-		.pipe(
-			tap(data => console.log('Handlers: ', JSON.stringify(data))),
-			shareReplay(1),
-			catchError(this.errorService.handleHttpError)
-		);
+	// handlers$ = this.httpService.get<Handler[]>('handlers')
+	// 	.pipe(
+	// 		tap(data => console.log('Handlers: ', JSON.stringify(data))),
+	// 		shareReplay(1),
+	// 		catchError(this.errorService.handleHttpError)
+	// 	);
 
 	selectedCatHandlers$ = this.catService.selectedCat$.pipe(
 		tap(data => {
@@ -28,7 +27,7 @@ export class HandlerService {
 				console.error('No cat selected');
 				return [];
 			}
-			const url = `handlers?cat_id=eq.${catId}`; // Adjust this based on your Supabase schema
+			const url = `handlers?cat_id=eq.${catId}`;
 		
 			return this.httpService.get<Handler[]>(url).pipe(
 				tap(data => console.log(`Cat Handlers for Cat ID ${catId}: `, JSON.stringify(data))),
@@ -38,13 +37,6 @@ export class HandlerService {
 		shareReplay(1)
 	  );
 
-	catHandlers$ = this.httpService.get<Handler[]>(`handlers/id=eq.${1}`)
-		.pipe(
-			tap(data => console.log('Cat Handlers: ', JSON.stringify(data))),
-			shareReplay(1),
-			catchError(this.errorService.handleHttpError)
-		);
-
 	constructor(
 		private httpService: HttpService,
 		private errorService: ErrorService,
@@ -52,13 +44,13 @@ export class HandlerService {
 		private supabaseService: SupabaseService
 	) { }
 
-	getCatHandlers(catId: number): Observable<Handler[]> {
-		const endpoint = `handlers/id=eq.${catId}`;
-		return this.httpService.get<Handler[]>(endpoint);
-	}
+	// getCatHandlers(catId: number): Observable<Handler[]> {
+	// 	const endpoint = `handlers/id=eq.${catId}`;
+	// 	return this.httpService.get<Handler[]>(endpoint);
+	// }
 
-	async getHandlersForCat(catId: number) {
-		const response = await this.supabaseService.getFromTableFor('handlers', 'catId', catId);
-		return response;
-	}
+	// async getHandlersForCat(catId: number) {
+	// 	const response = await this.supabaseService.getFromTableFor('handlers', 'catId', catId);
+	// 	return response;
+	// }
 }
