@@ -4,7 +4,7 @@
         {{pageTitle}}
     </mat-card-header>
 
-    <mat-card-content class="card-body cats-card-body">
+    <div class="card-body outer-card-body">
         <ng-container *ngIf="{ handlers: catHandlers$ | async, cat: selectedCat$ | async } as data">
             <ng-container *ngIf="data.handlers && data.handlers.length <= 0">
                 <mat-card-content class="card-body">
@@ -12,11 +12,10 @@
                 </mat-card-content>
             </ng-container>
 
-            <mat-card class="card cat-card" *ngFor="let handler of data.handlers">
+            <mat-card class="card inner-card" *ngFor="let handler of data.handlers">
                 <mat-card-header class="card-header">
                     <mat-card-title class="card-title">{{handler.firstName}} {{handler.lastName}}</mat-card-title>
                 </mat-card-header>
-                
                 <mat-card-content class="card-body">
                     <p class="card-text"><strong>Role:</strong> {{ handler.role }}</p>
                     <p class="card-text"><strong>Started working on:</strong> {{ handler.created_at | date }}</p>
@@ -27,6 +26,5 @@
             *ngIf="errorMessage$ | async as errorMessage">
         {{ errorMessage }}
         </div>
-    </mat-card-content>
+    </div>
 </mat-card>
-

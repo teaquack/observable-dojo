@@ -3,9 +3,15 @@
         {{pageTitle}} {{displayCats()}}
     </mat-card-header>
 
-    <mat-card-content class="card-body cats-card-body">
+    <div class="card-body outer-card-body">
 		<ng-container *ngIf="cats$ | async as cats">
-			<mat-card class="card cat-card" *ngFor="let cat of cats">
+			<ng-container *ngIf="cats && cats.length <= 0">
+                <mat-card-content class="card-body">
+                    <p class="card-text">There are no cats</p>
+                </mat-card-content>
+            </ng-container>
+
+			<mat-card class="card inner-card" *ngFor="let cat of cats">
 				<mat-card-header class="card-header">
 					<mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
 				</mat-card-header>
@@ -14,7 +20,7 @@
 					<p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
 					<p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
 					<p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
-						<button mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">See Cat</button>
+					<button mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">See Cat</button>
 				</mat-card-content>
 			</mat-card>
 		</ng-container>
@@ -22,5 +28,5 @@
 			*ngIf="errorMessage$ | async as errorMessage">
 		{{ errorMessage }}
 		</div>
-    </mat-card-content>
+    </div>
 </mat-card>

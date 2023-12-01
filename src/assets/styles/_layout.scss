@@ -1,0 +1,24 @@
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+	background-color: rgb(244, 244, 244);
+}
+
+.custom-container {
+	width: 100%;
+	max-width: 1200px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	// background-color: blue;
+}
+
+.page-title {
+	font-size: 2em;
+}

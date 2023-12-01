@@ -1,92 +1,9 @@
+
 /* You can add global styles to this file, and also import other style files */
 // @import "~bootstrap/dist/css/bootstrap.min.css";
+@import 'assets/styles/base';
+@import 'assets/styles/buttons';
+@import 'assets/styles/cards';
+@import 'assets/styles/layout';
 
-
-// CARDS
-.card {
-	margin-top: 10px;
-	background-color: purple;
-}
-
-.mat-card {
-	padding: 0 !important;
-}
-
-.card-body {
-	margin-top: 10px;
-	background-color: rgb(244, 244, 244);
-}
-
-.cats-card-body {
-    background-color: bisque;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-.cat-card {
-    flex-basis: calc(50% - 20px);
-    min-width: 300px;
-    box-sizing: border-box;
-    margin: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-// TABLES
-.table {
-	margin-top: 10px;
-}
-
-a {
-	text-decoration: none;
-}
-
-// BUTTONS
-.button-container {
-	display: flex;
-	gap: 2px;
-}
-
-.card-button {
-	font-size: 0.9em;
-}
-
-.button-text {
-	font-size: 1.3em;
-}
-
-// GENERAL
-html,
-body {
-	height: 100%;
-}
-
-body {
-	margin: 0;
-	font-family: Roboto, "Helvetica Neue", sans-serif;
-	background-color: rgb(244, 244, 244);
-}
-
-.custom-container {
-	width: 100%;
-	max-width: 1200px;
-	padding-right: 15px;
-	padding-left: 15px;
-	margin-right: auto;
-	margin-left: auto;
-	// background-color: blue;
-}
-
-.page-title {
-	font-size: 2em;
-}
-
-// UTILITY
-.toolbar-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-}
+// navbar.component.scss

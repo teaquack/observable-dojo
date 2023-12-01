@@ -42,3 +42,10 @@ button {
   background-color: $secondary-color !important;
   color: black !important;
 }
+
+.toolbar-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}

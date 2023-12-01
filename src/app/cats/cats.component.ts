@@ -6,8 +6,7 @@ import { Cat } from './cat';
 
 @Component({
 	selector: 'dojo-cats',
-	templateUrl: './cats.component.html',
-	styleUrls: ['./cats.component.css']
+	templateUrl: './cats.component.html'
 })
 export class CatsComponent {
 	pageTitle = 'Look at all them cats!';

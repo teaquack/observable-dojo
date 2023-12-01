@@ -5,8 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'dojo-cat-details',
-	templateUrl: './cat-details.component.html',
-	styleUrls: ['./cat-details.component.css']
+	templateUrl: './cat-details.component.html'
 })
 export class CatDetailsComponent implements OnInit {
 	private errorMessageSubject = new Subject<string>();

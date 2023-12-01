@@ -7,8 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'dojo-handlers',
-	templateUrl: './handlers.component.html',
-	styleUrls: ['./handlers.component.css']
+	templateUrl: './handlers.component.html'
 })
 export class HandlersComponent implements OnInit {
 	private errorMessageSubject = new Subject<string>();
