@@ -7,3 +7,10 @@
 @import 'assets/styles/layout';
 
 // navbar.component.scss
+
+// MISCELLANEOUS
+.toolbar-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

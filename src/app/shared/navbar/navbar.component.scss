@@ -28,24 +28,7 @@ $secondary-color: lightskyblue;
   margin-top: 4px;
 }
 
-button {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
 .secondary-menu-button {
   /* background-color: lightgreen !important; */
   border-radius: 20px;
-}
-
-.dojo-button {
-  background-color: $secondary-color !important;
-  color: black !important;
-}
-
-.toolbar-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
 }

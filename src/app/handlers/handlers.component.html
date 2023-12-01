@@ -7,7 +7,7 @@
     <div class="card-body outer-card-body">
         <ng-container *ngIf="{ handlers: catHandlers$ | async, cat: selectedCat$ | async } as data">
             <ng-container *ngIf="data.handlers && data.handlers.length <= 0">
-                <mat-card-content class="card-body">
+                <mat-card-content>
                     <p class="card-text">{{data.cat?.name}} does not have any handlers</p>
                 </mat-card-content>
             </ng-container>

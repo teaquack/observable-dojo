@@ -28,4 +28,8 @@ export class CatsComponent {
 		this.catService.selectCat(cat.id);
 		this.router.navigateByUrl(`/cats/${cat.id}`);
 	}
+
+	goToCatCreate(): void {
+		this.router.navigateByUrl(`/cats/create`);
+	}
 }
