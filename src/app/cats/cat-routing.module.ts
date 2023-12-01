@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { CatsComponent } from "./cats.component";
-import { CatDetailsComponent } from "../cat-details/cat-details.component";
+import { CatsComponent } from "./cats/cats.component";
+import { CatDetailsComponent } from "./cat-details/cat-details.component";
 import { DetailsNavbarGuard } from '../shared/details-navbar.guard';
 import { HandlersComponent } from "../handlers/handlers.component";
 

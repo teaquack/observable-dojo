@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { CatService } from './cat.service';
+import { CatService } from '../cat.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { Cat } from './cat';
+import { Cat } from '../cat';
 
 @Component({
 	selector: 'dojo-cats',

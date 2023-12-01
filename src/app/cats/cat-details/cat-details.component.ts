@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatService } from '../cats/cat.service';
+import { CatService } from '../cat.service';
 import { Subject, switchMap, take } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
