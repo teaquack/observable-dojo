@@ -3,7 +3,7 @@ import { Cat } from './cat';
 export class CatData {
 
     static cats: Cat[] = [
-        {
+        <Cat>{
             id: 1,
             name: 'Fluffy',
             color: 'White',
@@ -11,7 +11,7 @@ export class CatData {
             age: 3,
             imageUrl: 'assets/images/fluffy.jpg',
         },
-        {
+        <Cat>{
             id: 2,
             name: 'Kitty',
             color: 'Black',
@@ -19,7 +19,7 @@ export class CatData {
             age: 2,
             imageUrl: 'assets/images/sassy.jpg'
         },
-        {
+        <Cat>{
             id: 3,
             name: 'Salem',
             color: 'Black',
@@ -27,7 +27,7 @@ export class CatData {
             age: 1,
             imageUrl: 'assets/images/salem.jpg'
         },
-        {
+        <Cat>{
             id: 4,
             name: 'Tigger',
             color: 'Orange',

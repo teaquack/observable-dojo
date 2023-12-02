@@ -30,6 +30,6 @@ export class CatsComponent {
 	}
 
 	goToCatCreate(): void {
-		this.router.navigateByUrl(`/cats/create`);
+		this.router.navigateByUrl(`/cats/new`);
 	}
 }

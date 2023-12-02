@@ -1,0 +1,43 @@
+<mat-card class="card">
+    <mat-card-header class="card-header">
+        {{pageTitle}}
+    </mat-card-header>
+
+    <div class="card-body">
+        <form [formGroup]="catForm" (ngSubmit)="onSubmit()">
+            <div class="custom-container">
+                <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+                </mat-form-field>
+            </div>
+
+            <div class="custom-container">
+                <mat-form-field appearance="fill">
+                <mat-label>Color</mat-label>
+                <input matInput formControlName="color">
+                </mat-form-field>
+            </div>
+
+            <div class="custom-container">
+                <mat-form-field appearance="fill">
+                <mat-label>Breed</mat-label>
+                <input matInput formControlName="breed">
+                </mat-form-field>
+            </div>
+
+            <div class="custom-container">
+                <mat-form-field appearance="fill">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput type="date" formControlName="dateOfBirth" required>
+                </mat-form-field>
+            </div>
+
+            <div class="custom-container">
+                <button mat-raised-button color="primary" type="submit" class="card-button" [disabled]="catForm.invalid">
+                    Submit
+                </button>
+            </div>
+          </form>
+    </div>
+</mat-card>
