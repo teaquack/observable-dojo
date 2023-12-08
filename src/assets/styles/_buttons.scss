@@ -15,6 +15,11 @@ button {
 .light-dojo-button {
 	background-color: $tirtiary-color !important;
 	color: black !important;
+    transition: background-color 0.3s, color 0.3s !important;
+}
+.custom-button:disabled {
+  background-color: rgb(216, 215, 215) !important;
+  color: #757575 !important;
 }
 
 .button-container {

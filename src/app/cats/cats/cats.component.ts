@@ -21,7 +21,7 @@ export class CatsComponent {
 		private catService: CatService,
 		private router: Router,
         private dialog: MatDialog,
-        public catDialogService: CatDialogService
+        private catDialogService: CatDialogService
 	) { };
 
 	displayCats(): string {
@@ -34,7 +34,7 @@ export class CatsComponent {
 		this.router.navigateByUrl(`/cats/${cat.id}`);
 	}
 
-	goToCatCreate(): void {
+	onAddCatClick(): void {
         this.catDialogService.isOpen = true;
         const dialogRef = this.dialog.open(CreateCatComponent, {
             // width: '400px'
@@ -44,4 +44,8 @@ export class CatsComponent {
             this.catDialogService.isOpen = false;
         });
 	}
+
+    isAddCatButtonDisabled(): boolean {
+        return this.catDialogService.isModalOpen();
+    }
 }

@@ -13,7 +13,6 @@ export class CreateCatComponent implements OnInit {
     catForm!: FormGroup;
 
     constructor(
-        // public catDialogService: CatDialogService,
         private catService: CatService,
         private formBuilder: FormBuilder,
         private dialogRef: MatDialogRef<CreateCatComponent>

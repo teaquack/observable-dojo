@@ -5,4 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CatDialogService {
     isOpen = false;
+
+    isModalOpen(): boolean {
+        return this.isOpen;
+    }
 }
