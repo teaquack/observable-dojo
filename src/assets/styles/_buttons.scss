@@ -18,13 +18,14 @@ button {
     transition: background-color 0.3s, color 0.3s !important;
 }
 .custom-button:disabled {
-  background-color: rgb(216, 215, 215) !important;
+  background-color: rgb(220, 220, 220) !important;
   color: #757575 !important;
 }
 
 .button-container {
 	display: flex;
-	gap: 2px;
+    justify-content: center;
+	// gap: 2px;
 }
 
 .card-button {
