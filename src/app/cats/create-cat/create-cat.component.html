@@ -1,43 +1,38 @@
-<mat-card class="card">
-    <mat-card-header class="card-header">
-        {{pageTitle}}
-    </mat-card-header>
+<!-- <mat-card class="card"> -->
+    <form [formGroup]="catForm" (ngSubmit)="onSubmit()" class="center-form">
+        <mat-card-header class="card-header">
+            <mat-form-field appearance="outline">
+                <mat-label><strong>Name: </strong></mat-label>
+                <input matInput formControlName="name" required
+                    placeholder="Cat's name">
+            </mat-form-field>
+        </mat-card-header>
 
-    <div class="card-body">
-        <form [formGroup]="catForm" (ngSubmit)="onSubmit()">
-            <div class="custom-container">
-                <mat-form-field appearance="fill">
-                <mat-label>Name</mat-label>
-                <input matInput formControlName="name" required>
+        <mat-card-content class="card-body">
+            <p class="card-text">
+                <mat-form-field appearance="outline" class="form-input">
+                    <mat-label><strong>Breed: </strong></mat-label>
+                    <input matInput formControlName="breed" required
+                    placeholder="Breed">
                 </mat-form-field>
-            </div>
-
-            <div class="custom-container">
-                <mat-form-field appearance="fill">
-                <mat-label>Color</mat-label>
-                <input matInput formControlName="color">
+            </p>
+            <p class="card-text">
+                <mat-form-field appearance="outline">
+                    <mat-label><strong>Color: </strong></mat-label>
+                    <input matInput formControlName="color"
+                    placeholder="Color">
                 </mat-form-field>
-            </div>
-
-            <div class="custom-container">
-                <mat-form-field appearance="fill">
-                <mat-label>Breed</mat-label>
-                <input matInput formControlName="breed">
+            </p>
+            <p class="card-text">
+                <mat-form-field appearance="outline">
+                    <mat-label><strong>Date of Birth: </strong></mat-label>
+                    <input matInput formControlName="dateOfBirth" required
+                    placeholder="Date of Birth">
                 </mat-form-field>
-            </div>
-
-            <div class="custom-container">
-                <mat-form-field appearance="fill">
-                <mat-label>Date of Birth</mat-label>
-                <input matInput type="date" formControlName="dateOfBirth" required>
-                </mat-form-field>
-            </div>
-
-            <div class="custom-container">
-                <button mat-raised-button color="primary" type="submit" class="card-button" [disabled]="catForm.invalid">
-                    Submit
-                </button>
-            </div>
-          </form>
-    </div>
-</mat-card>
+            </p>
+            <button mat-raised-button color="accent" type="submit" class="card-button" [disabled]="catForm.invalid">
+                Create
+            </button>
+        </mat-card-content>
+    </form>
+<!-- </mat-card> -->

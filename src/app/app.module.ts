@@ -8,21 +8,23 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DojoComponent } from './dojo/dojo.component';
 import { HandlersComponent } from './handlers/handlers.component';
 import { MaterialModule } from './shared/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    DojoComponent,
-    HandlersComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-	  MaterialModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        DojoComponent,
+        HandlersComponent
+    ],
+    imports: [
+        // BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

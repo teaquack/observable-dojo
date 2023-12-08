@@ -3,6 +3,9 @@ import { CatService } from '../cat.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Cat } from '../cat';
+import { MatDialog } from '@angular/material/dialog';
+import { CatDialogService } from '../cat-dialog.service';
+import { CreateCatComponent } from '../create-cat/create-cat.component';
 
 @Component({
 	selector: 'dojo-cats',
@@ -13,10 +16,13 @@ export class CatsComponent {
 	cats$ = this.catService.cats$;
 	private errorMessageSubject = new Subject<string>();
 	errorMessage$ = this.errorMessageSubject.asObservable();
+    // showAddCatButton = true;
 
 	constructor(
 		private catService: CatService,
-		private router: Router
+		private router: Router,
+        private dialog: MatDialog,
+        public catDialogService: CatDialogService
 	) { };
 
 	displayCats(): string {
@@ -30,6 +36,13 @@ export class CatsComponent {
 	}
 
 	goToCatCreate(): void {
-		this.router.navigateByUrl(`/cats/new`);
+        this.catDialogService.isOpen = true;
+        const dialogRef = this.dialog.open(CreateCatComponent, {
+            // width: '400px'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.catDialogService.isOpen = false;
+        });
 	}
 }

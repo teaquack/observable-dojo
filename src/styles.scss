@@ -1,16 +1,22 @@
-
 /* You can add global styles to this file, and also import other style files */
 // @import "~bootstrap/dist/css/bootstrap.min.css";
 @import 'assets/styles/base';
 @import 'assets/styles/buttons';
 @import 'assets/styles/cards';
+@import 'assets/styles/forms';
 @import 'assets/styles/layout';
 
 // navbar.component.scss
 
+// FONTS
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 // MISCELLANEOUS
 .toolbar-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
 }

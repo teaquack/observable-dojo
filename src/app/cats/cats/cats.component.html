@@ -1,7 +1,8 @@
 <mat-card class="card">
     <mat-card-header class="card-header toolbar-container">
         {{pageTitle}} {{displayCats()}}
-		<button 
+		<button
+            *ngIf="!catDialogService.isOpen"
 			mat-raised-button color="accent"
 			class="card-button"
 			(click)="goToCatCreate()">
@@ -31,7 +32,7 @@
                     </button>
 				</mat-card-content>
 			</mat-card>
-			<mat-card class="card inner-card">
+			<mat-card *ngIf="!catDialogService.isOpen" class="card inner-card">
 				<div class="add-cat-container">
 					<button
 						mat-raised-button
@@ -41,6 +42,9 @@
 					</button>
 				</div>
 			</mat-card>
+			<mat-card *ngIf="catDialogService.isOpen" class="card inner-card">
+                <!-- <dojo-create-cat></dojo-create-cat> -->
+            </mat-card>
 		</ng-container>
 		<div class="alert alert-danger"
 			*ngIf="errorMessage$ | async as errorMessage">
