@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CatService } from '../cat.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CatDialogService } from '../cat-dialog.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'dojo-create-cat',
@@ -11,8 +13,10 @@ export class CreateCatComponent implements OnInit {
     catForm!: FormGroup;
 
     constructor(
+        // public catDialogService: CatDialogService,
         private catService: CatService,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private dialogRef: MatDialogRef<CreateCatComponent>
     ) { }
 
     ngOnInit(): void {
@@ -26,5 +30,9 @@ export class CreateCatComponent implements OnInit {
 
     onSubmit(): void {
         console.log('Form submitted :', this.catForm.value);
+        if (this.catForm.valid) {
+            this.catService.addCat(this.catForm.value);
+            this.dialogRef.close();
+        }
     }
 }

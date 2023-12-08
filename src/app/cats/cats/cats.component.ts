@@ -16,7 +16,6 @@ export class CatsComponent {
 	cats$ = this.catService.cats$;
 	private errorMessageSubject = new Subject<string>();
 	errorMessage$ = this.errorMessageSubject.asObservable();
-    // showAddCatButton = true;
 
 	constructor(
 		private catService: CatService,
