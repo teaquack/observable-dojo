@@ -1,7 +1,10 @@
 <!-- <div *ngIf="catHandlers$ | async as handlers; else loading"> -->
 <mat-card class="card">
     <mat-card-header class="card-header">
-        {{pageTitle}}
+        <strong>
+            {{pageTitle}}
+            <ng-container *ngIf="selectedCat$ | async as cat"> for {{cat.name}}</ng-container>
+        </strong>
     </mat-card-header>
 
     <div class="card-body outer-card-body">

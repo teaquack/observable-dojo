@@ -38,16 +38,16 @@ export class CatService {
 		shareReplay(1)
 	);
 
-	private catInsertedSubject = new Subject<Cat>();
-	catInsertedAction$ = this.catInsertedSubject.asObservable();
+	// private catInsertedSubject = new Subject<Cat>();
+	// catInsertedAction$ = this.catInsertedSubject.asObservable();
 
-	catWithAdd$ = merge(
-		this.cats$,
-		this.catInsertedAction$
-	).pipe(
-		scan((acc, value) =>
-			(value instanceof Array) ? [...value] : [...acc, value], [] as Cat[])
-	);
+	// catWithAdd$ = merge(
+	// 	this.cats$,
+	// 	this.catInsertedAction$
+	// ).pipe(
+	// 	scan((acc, value) =>
+	// 		(value instanceof Array) ? [...value] : [...acc, value], [] as Cat[])
+	// );
 
 	constructor(
 		private httpService: HttpService,
@@ -73,7 +73,8 @@ export class CatService {
 
 	addCat(newCat?: Cat) {
 		if (newCat != null) {
-			this.catInsertedSubject.next(newCat);
+            this.selectCat(newCat.id);
+			// this.catInsertedSubject.next(newCat);
 			// add cat to the API - database
 		}
 	}

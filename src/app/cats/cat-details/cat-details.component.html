@@ -1,7 +1,9 @@
 <mat-card class="card" *ngIf="selectedCat$ | async as cat">
 	<mat-card-header class="card-header">
-		{{pageTitle}} for {{cat?.name}}
-	</mat-card-header>
+        <strong>
+            {{pageTitle}} for {{cat?.name}}
+        </strong>
+    </mat-card-header>
 
 	<mat-card-content class="card-body">
 		<p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>

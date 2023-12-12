@@ -15,7 +15,7 @@
 </mat-toolbar>
 <div *ngIf="showDetailsNavbar">
 	<mat-toolbar class="custom-dojo secondary-navbar" *ngIf="selectedCat$ | async as cat">
-		<div class="custom-container">
+		<div class="container">
 			<div class="button-container">
 				<button class="custom-dojo secondary-menu-button" mat-raised-button color="primary" [routerLink]="['/cats', cat.id]" routerLinkActive="active">
 					<span class="button-text">Cat Overview</span>
@@ -25,8 +25,8 @@
 				</button>
 			</div>
 		</div>
-		<div class="container" style="padding-right: 50px">
-			<strong>Hello {{cat.name}}!</strong>
-		</div>
+        <!-- <div>
+            <strong class="card-header">Hello {{cat.name}}!</strong>
+        </div> -->
 	</mat-toolbar>
 </div>

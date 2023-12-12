@@ -34,6 +34,11 @@ export class CatsComponent {
 		this.router.navigateByUrl(`/cats/${cat.id}`);
 	}
 
+    goToCatHandlers(cat: Cat): void {
+        this.catService.selectCat(cat.id);
+        this.router.navigateByUrl(`/cats/${cat.id}/handlers`);
+    }
+
 	onAddCatClick(): void {
         this.catDialogService.isOpen = true;
         const dialogRef = this.dialog.open(CreateCatComponent, {
