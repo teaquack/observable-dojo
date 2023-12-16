@@ -34,6 +34,10 @@ export class SupabaseService {
   //   return this._session
   // }
 
+  async insertToTable(table_name: string, data: any) {
+    return await this.supabase.from(table_name).insert(data);
+  }
+
   async getFromTable(table_name: string, select: string = '*') {
     return await this.supabase.from(table_name).select(select);
   }

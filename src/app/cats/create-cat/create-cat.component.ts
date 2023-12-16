@@ -23,7 +23,7 @@ export class CreateCatComponent implements OnInit {
             name: ['', [Validators.required, Validators.maxLength(50)]],
             color: '',
             breed: '',
-            dateOfBirth: ''
+            birthdate: ''
         });
     }
 

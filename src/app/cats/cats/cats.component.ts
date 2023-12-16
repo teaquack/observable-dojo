@@ -13,7 +13,7 @@ import { CreateCatComponent } from '../create-cat/create-cat.component';
 })
 export class CatsComponent {
 	pageTitle = 'Look at all them cats!';
-	cats$ = this.catService.cats$;
+	cats$ = this.catService.catsWithAdd$;
 	private errorMessageSubject = new Subject<string>();
 	errorMessage$ = this.errorMessageSubject.asObservable();
 

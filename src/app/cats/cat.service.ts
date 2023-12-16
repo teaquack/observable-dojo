@@ -3,6 +3,7 @@ import { Cat } from './cat';
 import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
 import { HttpService } from '../shared/http.service';
+import { SupabaseService } from '../shared/supabase.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -38,19 +39,20 @@ export class CatService {
 		shareReplay(1)
 	);
 
-	// private catInsertedSubject = new Subject<Cat>();
-	// catInsertedAction$ = this.catInsertedSubject.asObservable();
+	private catInsertedSubject = new Subject<Cat>();
+	catInsertedAction$ = this.catInsertedSubject.asObservable();
 
-	// catWithAdd$ = merge(
-	// 	this.cats$,
-	// 	this.catInsertedAction$
-	// ).pipe(
-	// 	scan((acc, value) =>
-	// 		(value instanceof Array) ? [...value] : [...acc, value], [] as Cat[])
-	// );
+	catsWithAdd$ = merge(
+		this.cats$,
+		this.catInsertedAction$
+	).pipe(
+		scan((acc, value) =>
+			(value instanceof Array) ? [...value] : [...acc, value], [] as Cat[])
+	);
 
 	constructor(
 		private httpService: HttpService,
+        private supabaseService: SupabaseService,
 		private errorService: ErrorService
 	) { }
 
@@ -73,9 +75,13 @@ export class CatService {
 
 	addCat(newCat?: Cat) {
 		if (newCat != null) {
-            this.selectCat(newCat.id);
-			// this.catInsertedSubject.next(newCat);
-			// add cat to the API - database
+			this.catInsertedSubject.next(newCat);
+            this.supabaseService.insertToTable('cats', newCat)
+            .then(
+                () => console.log('Cat added!'),
+                (error) => console.log('Error (then) adding cat: ', error)
+            )
+            .catch((error) => console.log('Error (catch error) adding cat: ', error));
 		}
 	}
 
