@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CatService } from '../cat.service';
-import { Subject } from 'rxjs';
+import { Subject, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { Cat } from '../cat';
 import { MatDialog } from '@angular/material/dialog';
@@ -24,19 +24,24 @@ export class CatsComponent {
         private catDialogService: CatDialogService
 	) { };
 
-	displayCats(): string {
+	displayCatEmojis(): string {
 		return '😻😼😹🙀';
 	}
 
 	goToCatDetails(cat: Cat): void {
-		// console.log('go to cat details: ', cat.id);
 		this.catService.selectCat(cat.id);
-		this.router.navigateByUrl(`/cats/${cat.id}`);
+		this.router.navigateByUrl(`/cats/${cat.id}`)
+        .catch(error => {
+            console.log('Error navigating to cat details: ', error);
+        });
 	}
 
     goToCatHandlers(cat: Cat): void {
         this.catService.selectCat(cat.id);
-        this.router.navigateByUrl(`/cats/${cat.id}/handlers`);
+        this.router.navigateByUrl(`/cats/${cat.id}/handlers`)
+        .catch(error => {
+            console.log('Error navigating to cat handlers: ', error);
+        });
     }
 
 	onAddCatClick(): void {
@@ -45,9 +50,9 @@ export class CatsComponent {
             // width: '400px'
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            this.catDialogService.isOpen = false;
-        });
+        dialogRef.afterClosed().pipe(
+            take(1)
+        ).subscribe(() => this.catDialogService.isOpen = false);
 	}
 
     isAddCatButtonDisabled(): boolean {
