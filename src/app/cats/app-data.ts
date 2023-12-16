@@ -4,8 +4,8 @@ import { CatData } from './cat-data';
 
 export class AppData implements InMemoryDbService {
 
-  createDb(): { cats: Cat[] } {
-    const cats = CatData.cats;
-    return { cats };
-  }
+    createDb(): { cats: Cat[] } {
+        const cats = CatData.cats;
+        return { cats };
+    }
 }

@@ -2,33 +2,33 @@ $primary-color: #007bff;
 $secondary-color: lightskyblue;
 
 .nav-link {
-  font-size: large;
-  cursor: pointer;
+    font-size: large;
+    cursor: pointer;
 }
 
 .navbar-light .navbar-nav .nav-link.active {
-  color: aquamarine;
+    color: aquamarine;
 }
 
 .navbar-brand {
-  margin-left: 10px;
-  font-size: xx-large;
-  cursor: pointer;
+    margin-left: 10px;
+    font-size: xx-large;
+    cursor: pointer;
 }
 
 .primary-navbar {
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
 }
 
 .secondary-navbar {
-  background-color: $secondary-color;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  margin-top: 4px;
+    background-color: $secondary-color;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    margin-top: 4px;
 }
 
 .secondary-menu-button {
-  /* background-color: lightgreen !important; */
-  border-radius: 20px;
+    /* background-color: lightgreen !important; */
+    border-radius: 20px;
 }
