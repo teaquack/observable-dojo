@@ -2,42 +2,43 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
+// DOJO THEME:
+// Color Palette [https://material.io/design/color/]
 $dojo-primary: mat.define-palette(mat.$blue-palette);
 $dojo-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
 $dojo-warn: mat.define-palette(mat.$red-palette);
-
-$forest-primary: mat.define-palette(mat.$green-palette);
-$forest-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
-$forest-warn: mat.define-palette(mat.$purple-palette, A200, A100, A400);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
+// Typography [https://material.angular.io/guide/typography]
+$dojo-typography: mat.define-typography-config(
+    $font-family: 'Roboto, sans-serif'
+);
+// Theme Object
 $custom-dojo-theme: mat.define-light-theme((
   color: (
     primary: $dojo-primary,
     accent: $dojo-accent,
     warn: $dojo-warn
-  )
+  ),
+  typography: $dojo-typography
 ));
 
+// FOREST THEME:
+// Color Palette
+$forest-primary: mat.define-palette(mat.$green-palette);
+$forest-accent: mat.define-palette(mat.$orange-palette, A200, A100, A400);
+$forest-warn: mat.define-palette(mat.$purple-palette, A200, A100, A400);
+// Theme Object
 $custom-forest-theme: mat.define-light-theme((
   color: (
     primary: $forest-primary,
     accent: $forest-accent,
     warn: $forest-warn,
-  )
+  ),
+  typography: $dojo-typography
 ));
 
+// INCLUDE THEMES ON THE WEBSITE:
 // .custom-dojo {
   @include mat.all-component-themes($custom-dojo-theme);
 // }
@@ -45,4 +46,3 @@ $custom-forest-theme: mat.define-light-theme((
 // .custom-forest {
 //   @include mat.all-component-themes($custom-forest-theme);
 // }
-
