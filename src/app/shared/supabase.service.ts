@@ -38,7 +38,7 @@ export class SupabaseService {
         return this.supabase.auth.onAuthStateChange(callback)
     }
 
-    async signUp(email: string, password: string, redirect: string = 'http://localhost:4200/welcome') {
+    async signUp(email: string, password: string, redirect: string) {
         return await this.supabase.auth.signUp({
             email: email,
             password: password,

@@ -4,7 +4,7 @@ import { Subject, take } from 'rxjs';
 import { Router } from '@angular/router';
 import { Cat } from '../cat';
 import { MatDialog } from '@angular/material/dialog';
-import { CatDialogService } from '../cat-dialog.service';
+import { ModalDialogService } from '../../shared/modal-dialog.service';
 import { CreateCatComponent } from '../create-cat/create-cat.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class CatsComponent {
 		private catService: CatService,
 		private router: Router,
         private dialog: MatDialog,
-        private catDialogService: CatDialogService
+        private modalDialogService: ModalDialogService
 	) { };
 
 	displayCatEmojis(): string {
@@ -45,17 +45,17 @@ export class CatsComponent {
     }
 
 	onAddCatClick(): void {
-        this.catDialogService.isOpen = true;
+        this.modalDialogService.isOpen = true;
         const dialogRef = this.dialog.open(CreateCatComponent, {
             // width: '400px'
         });
 
         dialogRef.afterClosed().pipe(
             take(1)
-        ).subscribe(() => this.catDialogService.isOpen = false);
+        ).subscribe(() => this.modalDialogService.isOpen = false);
 	}
 
     isAddCatButtonDisabled(): boolean {
-        return this.catDialogService.isModalOpen();
+        return this.modalDialogService.isModalOpen();
     }
 }

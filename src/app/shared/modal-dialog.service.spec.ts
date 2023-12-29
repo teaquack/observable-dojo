@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
+import { ModalDialogService } from './modal-dialog.service';
 
-import { CatDialogService } from './cat-dialog.service';
-
-describe('CatDialogService', () => {
-    let service: CatDialogService;
+describe('ModalDialogService', () => {
+    let service: ModalDialogService;
 
     beforeEach(() => {
         TestBed.configureTestingModule({});
-        service = TestBed.inject(CatDialogService);
+        service = TestBed.inject(ModalDialogService);
     });
 
     it('should be created', () => {

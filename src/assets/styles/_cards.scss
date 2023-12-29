@@ -3,6 +3,11 @@
     background-color: purple;
 }
 
+.card-header {
+    margin-bottom: 15px;
+    margin-top: 0px;
+}
+
 .card-body {
     margin-top: 10px;
     padding-bottom: 20px;
@@ -32,4 +37,18 @@
     @media (max-width: 640px) {
         flex-basis: calc(100% - 20px);
     }
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    min-height: 500px;
+    padding: 16px;
+    box-sizing: border-box;
 }

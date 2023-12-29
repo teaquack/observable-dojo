@@ -29,7 +29,6 @@ import { IconService } from './shared/icon.service';
 })
 export class AppModule { 
     constructor(private iconService: IconService) {
-        console.log('AppModule loaded');
         this.iconService.registerIcons([
             { name: 'lock', path: '../assets/icons/lock.svg' }
         ]);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CatService } from '../cat.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CatDialogService } from '../cat-dialog.service';
+import { ModalDialogService } from '../../shared/modal-dialog.service';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({

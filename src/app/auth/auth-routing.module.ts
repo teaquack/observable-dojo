@@ -6,11 +6,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 @NgModule({
     imports: [RouterModule.forChild([
         {
-            path: 'signin',
+            path: 'sign-in',
             component: SignInComponent
         },
         {
-            path: 'signup',
+            path: 'sign-up',
             component: SignUpComponent
         }
     ])],

@@ -3,50 +3,59 @@ $secondary-color: lightskyblue;
 $tirtiary-color: #d6ebff;
 
 button {
-	margin-left: 5px;
-	margin-right: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .dojo-button {
-	background-color: $secondary-color !important;
-	color: black !important;
+    background-color: $secondary-color !important;
+    color: black !important;
 }
 
 .light-dojo-button {
-	background-color: $tirtiary-color !important;
-	color: black !important;
+    background-color: $tirtiary-color !important;
+    color: black !important;
     transition: background-color 0.3s, color 0.3s !important;
 }
+
 .custom-button:disabled {
-  background-color: rgb(220, 220, 220) !important;
-  color: #757575 !important;
+    background-color: rgb(220, 220, 220) !important;
+    color: #757575 !important;
 }
 
 .button-container {
-	display: flex;
+    display: flex;
     justify-content: center;
-	// gap: 2px;
+    // gap: 2px;
 }
 
 .card-button {
-	font-size: 0.9em;
+    font-size: 0.9em;
 }
 
 .button-text {
-	font-size: 1.3em;
+    font-size: 1.3em;
 }
 
 .add-cat-button {
-	width: 100%;
-	height: 100% !important;
-	margin: 0;
+    width: 100%;
+    height: 100% !important;
+    margin: 0;
 }
 
 .add-cat-container {
-	height: 100%;
-	min-height: 200px;
+    height: 100%;
+    min-height: 200px;
     margin: 0;
     padding: 20px;
-	display: flex;
+    display: flex;
     justify-content: center;
+}
+
+.auth-card-link {
+    margin-top: 16px;
+    text-align: center;
+}
+.auth-card-button {
+    margin-top: 10px;
 }

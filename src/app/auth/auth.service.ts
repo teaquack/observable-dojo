@@ -32,7 +32,7 @@ export class AuthService {
         return data?.session;
     }
 
-    async signUp(email: string, password: string, redirect: string): Promise<Session | null> {
+    async signUp(email: string, password: string, redirect: string = 'http://localhost:4200/welcome'): Promise<Session | null> {
         const authResponse: AuthResponse = await this.supabaseService.signUp(email, password, redirect);
 
         if (authResponse.error) {
