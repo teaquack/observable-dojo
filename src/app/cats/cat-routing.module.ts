@@ -6,7 +6,6 @@ import { DetailsNavbarGuard } from '../shared/details-navbar.guard';
 import { HandlersComponent } from "../handlers/handlers.component";
 import { CreateCatComponent } from './create-cat/create-cat.component';
 
-
 @NgModule({
 	imports: [RouterModule.forChild([
 		{

@@ -9,6 +9,10 @@ import { DojoComponent } from './dojo/dojo.component';
 			path: 'cats',
 			loadChildren: () => import('./cats/cat.module').then(m => m.CatModule)
 		},
+        {
+            path: 'auth',
+            loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+        },
 		{ path: '', redirectTo: 'welcome', pathMatch: 'full' },
 		{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
 	])],
