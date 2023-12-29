@@ -33,7 +33,11 @@ export class AppModule {
             { name: 'lock', path: '../assets/icons/lock.svg' },
             { name: 'eye', path: '../assets/icons/eye.svg' },
             { name: 'eye-closed', path: '../assets/icons/eye-closed.svg' },
-            { name: 'no-eye', path: '../assets/icons/no-eye.svg' }
+            { name: 'no-eye', path: '../assets/icons/no-eye.svg' },
+            { name: 'coffee', path: '../assets/icons/coffee.svg' },
+            { name: 'cube', path: '../assets/icons/cube.svg' },
+            { name: 'heart', path: '../assets/icons/heart.svg' },
+            { name: 'ruby', path: '../assets/icons/ruby.svg' }
         ]);
     }
 }
