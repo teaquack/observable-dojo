@@ -10,7 +10,14 @@
                 </mat-form-field>
 
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Password" formControlName="password" type="password" required>
+                    <input matInput 
+                            placeholder="Password" 
+                            formControlName="password" 
+                            [type]="hidePassword ? 'password' : 'text'" 
+                            required>
+                    <button type="button" mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+                        <mat-icon svgIcon="{{ hidePassword ? 'eye' : 'eye-closed' }}"></mat-icon>
+                    </button>
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" type="submit" class="card-button auth-card-button"

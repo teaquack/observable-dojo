@@ -30,7 +30,10 @@ import { IconService } from './shared/icon.service';
 export class AppModule { 
     constructor(private iconService: IconService) {
         this.iconService.registerIcons([
-            { name: 'lock', path: '../assets/icons/lock.svg' }
+            { name: 'lock', path: '../assets/icons/lock.svg' },
+            { name: 'eye', path: '../assets/icons/eye.svg' },
+            { name: 'eye-closed', path: '../assets/icons/eye-closed.svg' },
+            { name: 'no-eye', path: '../assets/icons/no-eye.svg' }
         ]);
     }
 }

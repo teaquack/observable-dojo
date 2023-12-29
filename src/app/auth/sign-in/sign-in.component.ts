@@ -11,6 +11,7 @@ export class SignInComponent {
     email: string = '';
     password: string = '';
     signinForm!: FormGroup;
+    hidePassword: boolean = true;
 
     constructor(
         private authService: AuthService,
@@ -25,11 +26,16 @@ export class SignInComponent {
         });
     }
 
-    signIn(): void {
-        this.authService.signIn(this.email, this.password, 'cats');
+    onSubmit(): void {
+        console.log('on submit')
+        this.authService.signIn(this.email, this.password, 'http://localhost:4200/cats');
     }
 
     signUp(): void {
         this.router.navigateByUrl('/auth/sign-up');
+    }
+
+    togglePasswordVisibility(): void {
+        this.hidePassword = !this.hidePassword;
     }
 }

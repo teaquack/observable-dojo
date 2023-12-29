@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
     signupForm!: FormGroup;
+    hidePassword: boolean = true;
     
     constructor(
         private authService: AuthService,
@@ -41,5 +42,9 @@ export class SignUpComponent {
 
     onClose(): void {
         // this.dialogRef.close();
+    }
+    
+    togglePasswordVisibility(): void {
+        this.hidePassword = !this.hidePassword;
     }
 }
