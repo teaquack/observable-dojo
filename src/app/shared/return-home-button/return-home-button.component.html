@@ -1,0 +1,11 @@
+<div class="return-home-container">
+    <button mat-fab type="button" color="accent" class="custom-dojo"
+            aria-label="Return home"
+            [routerLink]="['/dojo']"
+            (click)="toggleButton()"
+            [@catAnimation]="buttonState">
+        <span class="return-home-icon">🐈</span>
+    </button>
+</div>
+
+<!-- [routerLink]="['/dojo']" -->

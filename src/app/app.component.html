@@ -1,6 +1,9 @@
 <div *ngIf="showNavbar" class="custom-container">
 	<dojo-navbar></dojo-navbar>
 </div>
+<div *ngIf="!showNavbar" class="custom-container">
+    <dojo-return-home-button></dojo-return-home-button>
+</div>
 
 <div class="custom-container">
     <router-outlet></router-outlet>

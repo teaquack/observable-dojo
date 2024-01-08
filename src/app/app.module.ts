@@ -9,16 +9,17 @@ import { HandlersComponent } from './handlers/handlers.component';
 import { MaterialModule } from './shared/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconService } from './shared/icon.service';
+import { ReturnHomeButtonComponent } from './shared/return-home-button/return-home-button.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavbarComponent,
         DojoComponent,
-        HandlersComponent
+        HandlersComponent,
+        ReturnHomeButtonComponent
     ],
     imports: [
-        // BrowserModule,
         HttpClientModule,
         AppRoutingModule,
         MaterialModule,
