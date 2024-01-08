@@ -28,6 +28,11 @@ button {
     justify-content: center;
     // gap: 2px;
 }
+.return-home-container {
+    display: flex;
+    justify-content: right;
+    margin-top: 10px;
+}
 
 .card-button {
     font-size: 0.9em;
@@ -58,4 +63,8 @@ button {
 }
 .auth-card-button {
     margin-top: 10px;
+}
+
+.return-home-icon {
+    font-size: 2em;
 }
