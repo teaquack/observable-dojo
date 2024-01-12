@@ -7,7 +7,7 @@ export class LogService {
 
     constructor() { }
 
-    log(message: string, color: string): void {
+    log(message: any, color: string): void {
         console.log(`%c${message}`, `color: ${color}; font-weight: bold;`);
     }
 }

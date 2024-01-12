@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,8 +14,7 @@ export class SignUpComponent {
     constructor(
         private authService: AuthService,
         private formBuilder: FormBuilder,
-        private router: Router,
-        // private dialogRef: MatDialogRef<SignUpComponent>
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -31,17 +29,15 @@ export class SignUpComponent {
         if (this.signupForm.valid) {
             const email = this.signupForm.value?.email;
             const password = this.signupForm.value?.password;
-            this.authService.signUp(email, password);
-            // this.dialogRef.close();
+            this.authService.signUp(email, password).catch(error => {
+                console.error('Sign-up error: ', error?.message);
+            });
+            this.router.navigateByUrl('/auth/sign-up/confirm');
         }
     }
 
     signIn(): void {
         this.router.navigateByUrl('/auth/sign-in');
-    }
-
-    onClose(): void {
-        // this.dialogRef.close();
     }
     
     togglePasswordVisibility(): void {

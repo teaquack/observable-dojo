@@ -19,7 +19,7 @@ export class HandlerService {
 
 	selectedCatHandlers$ = this.catService.selectedCat$.pipe(
 		tap(data => {
-			console.log('selected cat in handler service: ', data)
+			// console.log('selected cat in handler service: ', data)
 		}),
 		switchMap(cat => {
 			const catId = cat?.id ?? 0;
@@ -30,7 +30,7 @@ export class HandlerService {
 			const url = `handlers?cat_id=eq.${catId}`;
 		
 			return this.httpService.get<Handler[]>(url).pipe(
-				tap(data => console.log(`Cat Handlers for Cat ID ${catId}: `, JSON.stringify(data))),
+				// tap(data => console.log(`Cat Handlers for Cat ID ${catId}: `, JSON.stringify(data))),
 				catchError(this.errorService.handleHttpError)
 			);
 		}),

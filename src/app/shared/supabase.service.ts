@@ -4,6 +4,7 @@ import {
     AuthSession,
     createClient,
     Session,
+    SignUpWithPasswordCredentials,
     SupabaseClient,
     User,
 } from '@supabase/supabase-js';
@@ -38,14 +39,17 @@ export class SupabaseService {
         return this.supabase.auth.onAuthStateChange(callback)
     }
 
-    async signUp(email: string, password: string, redirect: string) {
-        return await this.supabase.auth.signUp({
+    async signUp(email: string, password: string, redirect: any) {
+        const signUpRequest = <SignUpWithPasswordCredentials> {
             email: email,
-            password: password,
-            options: {
+            password: password
+        };
+        if (redirect) {
+            signUpRequest.options = {
                 emailRedirectTo: redirect
             }
-        });
+        }
+        return await this.supabase.auth.signUp(signUpRequest);
     }
 
     async signIn(email: string, password: string) {
