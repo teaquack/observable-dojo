@@ -5,7 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
 	imports: [RouterModule.forRoot([
-		{ path: '', component: DojoComponent },
+		{ path: 'dojo', component: DojoComponent },
 		{
 			path: 'cats',
 			loadChildren: () => import('./cats/cat.module').then(m => m.CatModule),
@@ -15,8 +15,8 @@ import { AuthGuard } from './auth/auth.guard';
             path: 'auth',
             loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
         },
-		{ path: '', redirectTo: 'welcome', pathMatch: 'full' },
-		{ path: '**', redirectTo: 'welcome', pathMatch: 'full' }
+		{ path: '', redirectTo: 'dojo', pathMatch: 'full' },
+		{ path: '**', redirectTo: 'dojo', pathMatch: 'full' }
 	])],
 	exports: [RouterModule]
 })

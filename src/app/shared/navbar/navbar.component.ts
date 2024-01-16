@@ -36,6 +36,5 @@ export class NavbarComponent implements OnInit {
 
     onSignOut(): void {
         this.authService.signOut();
-        this.router.navigateByUrl('');
     }
 }
