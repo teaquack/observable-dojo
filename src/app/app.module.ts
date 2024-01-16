@@ -38,7 +38,8 @@ export class AppModule {
             { name: 'coffee', path: '../assets/icons/coffee.svg' },
             { name: 'cube', path: '../assets/icons/cube.svg' },
             { name: 'heart', path: '../assets/icons/heart.svg' },
-            { name: 'ruby', path: '../assets/icons/ruby.svg' }
+            { name: 'ruby', path: '../assets/icons/ruby.svg' },
+            { name: 'signout', path: '../assets/icons/signout.svg' }
         ]);
     }
 }

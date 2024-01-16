@@ -8,10 +8,9 @@ import { Router } from '@angular/router';
     templateUrl: './sign-in.component.html'
 })
 export class SignInComponent {
-    email: string = '';
-    password: string = '';
     signinForm!: FormGroup;
     hidePassword: boolean = true;
+    isValid: boolean = true;
 
     constructor(
         private authService: AuthService,
@@ -26,9 +25,19 @@ export class SignInComponent {
         });
     }
 
-    onSubmit(): void {
-        console.log('on submit')
-        this.authService.signIn(this.email, this.password, 'http://localhost:4200/cats');
+    async onSubmit(): Promise<void> {
+        if (this.signinForm.valid) {
+            const email = this.signinForm.value?.email;
+            const password = this.signinForm.value?.password;
+            try {
+                const session = await this.authService.signIn(email, password);
+                if (session !== null) {
+                    this.router.navigateByUrl('/');
+                }
+            } catch (error) {
+                this.isValid = false;
+            };
+        }
     }
 
     signUp(): void {

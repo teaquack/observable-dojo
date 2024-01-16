@@ -3,17 +3,23 @@
 		<div class="toolbar-container">
 			<span class="page-title">{{ pageTitle }}</span>
 			<div class="button-container">
-				<button class="custom-dojo" mat-raised-button color="accent" [routerLink]="['/cats']" routerLinkActive="active">
-					<span class="button-text">See the Cats!</span>
+				<button *ngIf="isAuthenticated" class="custom-dojo" mat-raised-button color="accent" [routerLink]="['/cats']" routerLinkActive="active">
+					<span class="button-text">My Cats!</span>
 				</button>
 				<button class="custom-dojo dojo-button" mat-raised-button color="warn" [routerLink]="['/dojo']" routerLinkActive="active">
 					<span class="button-text">Dojo</span>
 				</button>
-				<button title="Login" class="custom-dojo" mat-raised-button [routerLink]="['/auth/sign-in']" routerLinkActive="active">
+				<button *ngIf="!isAuthenticated" title="Login" class="custom-dojo" mat-raised-button [routerLink]="['/auth/sign-in']" routerLinkActive="active">
                     <span class="button-text button-container">
                         <mat-icon svgIcon="lock"></mat-icon>
                     </span>
 				</button>
+                <button *ngIf="isAuthenticated" title="Logout" class="custom-dojo" mat-raised-button (click)="onSignOut()">
+                    <!-- <span class="button-text">Sign Out</span> -->
+                    <span class="button-text button-container">
+                        <mat-icon svgIcon="signout"></mat-icon>
+                    </span>
+                </button>
 			</div>
 		</div>
 	</div>

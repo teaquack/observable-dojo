@@ -6,6 +6,7 @@
     <div class="card-body">
         <div class="custom-container">
 			<p>Here, you will be able to play with cats and other observable animals.</p>
+            <p *ngIf="!isAuthenticated"><b>You must sign in to see the cats</b></p>
         </div>
     </div>
 </mat-card>

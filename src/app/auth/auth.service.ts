@@ -9,9 +9,11 @@ import { LogService } from '../shared/log.service';
 })
 export class AuthService {
     private userSubject: BehaviorSubject<Session | null>;
+    private isAuthenticatedSubject!: BehaviorSubject<boolean>;
 
     constructor(private supabaseService: SupabaseService, private logService: LogService) {
         this.userSubject = new BehaviorSubject<Session | null>(supabaseService.session);
+        this.isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
 
         this.supabaseService.authChanges((event: AuthChangeEvent, session: Session | null) => {
             this.logService.log(event, 'darkgreen');
@@ -30,14 +32,23 @@ export class AuthService {
                 // handle user updated event
             }
             this.userSubject.next(session);
+            this.isAuthenticatedSubject.next(this.isAuthenticated());
         });
+    }
+
+    private isAuthenticated(): boolean {
+        return !!this.userSubject.value;
     }
 
     getSession(): Observable<Session | null> {
         return this.userSubject.asObservable();
     }
 
-    async signIn(email: string, password: string, options: any): Promise<Session | null> {
+    isAuthenticated$(): Observable<boolean> {
+        return this.isAuthenticatedSubject.asObservable();
+    }
+
+    async signIn(email: string, password: string, options: any = null): Promise<Session | null> {
         const { data, error } = await this.supabaseService.signIn(email, password);
 
 

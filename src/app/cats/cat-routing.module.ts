@@ -6,9 +6,14 @@ import { DetailsNavbarGuard } from '../shared/details-navbar.guard';
 import { HandlersComponent } from "../handlers/handlers.component";
 import { CreateCatComponent } from './create-cat/create-cat.component';
 
+/* All of the routes have AuthGuard in app-routing */
 const routes: Routes = [
-    { path: '', component: CatsComponent },
-    { path: 'new', component: CreateCatComponent },
+    {
+        path: '', component: CatsComponent
+    },
+    {
+        path: 'new', component: CreateCatComponent
+    },
     {
         path: ':id',
         component: CatDetailsComponent,
@@ -22,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forChild(routes)],
-	exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class CatRoutingModule { }
