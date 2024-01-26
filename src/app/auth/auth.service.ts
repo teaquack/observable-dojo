@@ -3,6 +3,7 @@ import { AuthChangeEvent, AuthResponse, AuthSession, Session, User } from '@supa
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SupabaseService } from '../shared/supabase.service';
 import { LogService } from '../shared/log.service';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -23,7 +24,7 @@ export class AuthService {
         return this.userSubject.asObservable();
     }
     
-    constructor(private supabaseService: SupabaseService, private logService: LogService) {
+    constructor(private supabaseService: SupabaseService, private logService: LogService, private router: Router) {
         this.userSubject = new BehaviorSubject<Session | null>(supabaseService.session);
         this.isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
 
@@ -69,6 +70,7 @@ export class AuthService {
 
     async signOut(): Promise<void> {
         const { error } = await this.supabaseService.signOut();
+        this.router.navigateByUrl('/dojo');
 
         if (error) {
             console.log('Error logging out: ', error.message);

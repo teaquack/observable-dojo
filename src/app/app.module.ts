@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { DojoComponent } from './dojo/dojo.component';
@@ -10,6 +10,8 @@ import { MaterialModule } from './shared/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconService } from './shared/icon.service';
 import { ReturnHomeButtonComponent } from './shared/return-home-button/return-home-button.component';
+import { AuthModule } from './auth/auth.module';
+import { AuthInterceptor } from './auth/auth-interceptor.service';
 
 @NgModule({
     declarations: [
@@ -19,13 +21,19 @@ import { ReturnHomeButtonComponent } from './shared/return-home-button/return-ho
         HandlersComponent,
         ReturnHomeButtonComponent
     ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
     imports: [
         HttpClientModule,
         AppRoutingModule,
         MaterialModule,
-        BrowserAnimationsModule,
+        BrowserAnimationsModule
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { 

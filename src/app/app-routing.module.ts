@@ -12,6 +12,11 @@ import { AuthGuard } from './auth/auth.guard';
             canActivate: [AuthGuard]
 		},
         {
+            path: 'profile',
+            loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule),
+            canActivate: [AuthGuard]
+        },
+        {
             path: 'auth',
             loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
         },

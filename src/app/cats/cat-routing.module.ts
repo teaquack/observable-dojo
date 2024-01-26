@@ -8,12 +8,8 @@ import { CreateCatComponent } from './create-cat/create-cat.component';
 
 /* All of the routes have AuthGuard in app-routing */
 const routes: Routes = [
-    {
-        path: '', component: CatsComponent
-    },
-    {
-        path: 'new', component: CreateCatComponent
-    },
+    { path: '', component: CatsComponent },
+    { path: 'new', component: CreateCatComponent },
     {
         path: ':id',
         component: CatDetailsComponent,

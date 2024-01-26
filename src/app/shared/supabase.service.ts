@@ -32,11 +32,11 @@ export class SupabaseService {
         this.supabase.auth.getSession().then(({ data }) => {
             this._session = data.session
         })
-        return this._session
+        return this._session;
     }
 
     authChanges(callback: (event: AuthChangeEvent, session: Session | null) => void) {
-        return this.supabase.auth.onAuthStateChange(callback)
+        return this.supabase.auth.onAuthStateChange(callback);
     }
 
     async signUp(email: string, password: string, redirect: any) {
@@ -60,30 +60,13 @@ export class SupabaseService {
         return await this.supabase.auth.signOut();
     }
 
-    // profile(user: User) {
-    //   return this.supabase
-    //     .from('profiles')
-    //     .select(`username, website, avatar_url`)
-    //     .eq('id', user.id)
-    //     .single()
-    // }
-
-    // updateProfile(profile: Profile) {
-    //   const update = {
-    //     ...profile,
-    //     updated_at: new Date(),
-    //   }
-
-    //   return this.supabase.from('profiles').upsert(update)
-    // }
-
-    // downLoadImage(path: string) {
-    //   return this.supabase.storage.from('avatars').download(path)
-    // }
-
-    // uploadAvatar(filePath: string, file: File) {
-    //   return this.supabase.storage.from('avatars').upload(filePath, file)
-    // }
+    async getProfile(user: User) {
+        return this.supabase
+        .from('profiles')
+        .select(`username, website, avatar_url`)
+        .eq('id', user.id)
+        .single();
+    }
 
     async insertToTable(table_name: string, data: any) {
         return await this.supabase.from(table_name).insert(data);
