@@ -37,7 +37,7 @@ export class CatsComponent {
 	}
 
     goToCatHandlers(cat: Cat): void {
-        this.catService.selectCat(cat.id);
+        // this.catService.selectCat(cat.id);
         this.router.navigateByUrl(`/cats/${cat.id}/handlers`)
         .catch(error => {
             console.log('Error navigating to cat handlers: ', error);

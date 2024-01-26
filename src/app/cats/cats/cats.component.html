@@ -21,10 +21,10 @@
                     <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
                     <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
                     <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
-                    <button mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">
+                    <button type="button" mat-raised-button color="accent" class="card-button" (click)="goToCatDetails(cat)">
                         See Cat
                     </button>
-                    <button mat-raised-button class="card-button" (click)="goToCatHandlers(cat)">
+                    <button type="button" mat-raised-button class="card-button" (click)="goToCatHandlers(cat)">
                         Handlers
                     </button>
                 </mat-card-content>
