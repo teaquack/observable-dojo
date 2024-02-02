@@ -11,7 +11,8 @@
     </mat-card-header>
 
     <div class="card-body outer-card-body">
-        <ng-container *ngIf="cats$ | async as cats; else noCats">
+        <h2 class="section-header">Your Cats</h2>
+        <ng-container *ngIf="userCats$ | async as cats; else noCats">
             <mat-card class="card inner-card" *ngFor="let cat of cats">
                 <mat-card-header class="card-header">
                     <mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
@@ -45,6 +46,26 @@
             {{ errorMessage }}
             </div>
         </ng-container>
+        
+        <h2 class="section-header">Other Cats</h2>
+        <ng-container *ngIf="otherCats$ | async as cats; else noCats">
+            <mat-card class="card inner-card" *ngFor="let cat of cats">
+                <mat-card-header class="card-header">
+                    <mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="card-body">
+                    <p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>
+                    <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
+                    <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
+                    <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
+                </mat-card-content>
+            </mat-card>
+            <div class="alert alert-danger"
+                *ngIf="errorMessage$ | async as errorMessage">
+            {{ errorMessage }}
+            </div>
+        </ng-container>
+    
         <ng-template #noCats>
             <mat-card-content>
                 <p class="no-cats-text">There are no cats 😿</p>
