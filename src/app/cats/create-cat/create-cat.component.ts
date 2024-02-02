@@ -30,8 +30,9 @@ export class CreateCatComponent implements OnInit {
     onSubmit(): void {
         console.log('Form submitted :', this.catForm.value);
         if (this.catForm.valid) {
-            this.catService.addCat(this.catForm.value);
-            this.dialogRef.close();
+            this.catService.addCat(this.catForm.value).subscribe(() => {
+                this.dialogRef.close();
+            });
         }
     }
 

@@ -10,4 +10,5 @@ export interface Cat {
     imageUrl: string;
     age: number;
     handlers: Handler[];
+    user_id: string;
 }

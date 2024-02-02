@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Cat } from './cat';
-import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take } from 'rxjs';
+import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take, from } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
 import { HttpService } from '../shared/http.service';
 import { SupabaseService } from '../shared/supabase.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -53,7 +54,8 @@ export class CatService {
 	constructor(
 		private httpService: HttpService,
         private supabaseService: SupabaseService,
-		private errorService: ErrorService
+		private errorService: ErrorService,
+        private authService: AuthService
 	) { }
 
 	handleCatSelection(catId: number): Observable<void | null> {
@@ -73,16 +75,20 @@ export class CatService {
 		}
 	}
 
-	addCat(newCat?: Cat) {
-		if (newCat != null) {
-			this.catInsertedSubject.next(newCat);
-            this.supabaseService.insertToTable('cats', newCat)
-            .then(
-                () => console.log('Cat added!'),
-                (error) => console.log('Error (then) adding cat: ', error)
-            )
-            .catch((error) => console.log('Error (catch error) adding cat: ', error));
-		}
+	addCat(newCat: Cat): Observable<void> {
+        return this.authService.getSession().pipe(
+            take(1),
+            switchMap(session => {
+                if (session) {
+                    newCat.user_id = session.user.id;
+                    this.catInsertedSubject.next(newCat);
+                    return from(this.supabaseService.insertToTable('cats', newCat))
+                    .pipe(map(() => {}));
+                } else {
+                    throw new Error('No user session found');
+                }
+            })
+        );
 	}
 
 	private getAge(birthdate: Date): number {
