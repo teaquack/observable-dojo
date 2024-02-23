@@ -12,6 +12,7 @@
             [cats$]="userCats$"
             [type]="'user'"
             [allowInteraction]="true"
+            [isAddCatButtonDisabled]="isAddCatButtonDisabled()"
             (navigate)="onNavigate($event)"
             (openModal)="onOpenModal($event)">
         </dojo-cat-list>

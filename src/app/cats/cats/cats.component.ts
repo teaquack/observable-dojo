@@ -17,6 +17,7 @@ export class CatsComponent {
     cats$ = this.catService.catsWithAdd$;
     private errorMessageSubject = new Subject<string>();
     errorMessage$ = this.errorMessageSubject.asObservable();
+
     userCats$ = combineLatest([
         this.authService.getSession(),
         this.catService.catsWithAdd$
@@ -71,7 +72,9 @@ export class CatsComponent {
 
         dialogRef.afterClosed().pipe(
             take(1)
-        ).subscribe(() => this.modalDialogService.isOpen = false);
+        ).subscribe(() => {
+            this.modalDialogService.isOpen = false;
+        });
     }
 
     isAddCatButtonDisabled(): boolean {

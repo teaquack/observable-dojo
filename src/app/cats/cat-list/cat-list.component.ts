@@ -11,24 +11,22 @@ export class CatListComponent {
     @Input() cats$!: Observable<Cat[]>;
     @Input() type!: string;
     @Input() allowInteraction!: boolean;
+    @Input() isAddCatButtonDisabled!: boolean;
     @Output() navigate: EventEmitter<CatNavigationEvent> = new EventEmitter<CatNavigationEvent>();
     @Output() openModal: EventEmitter<CatModalEvent> = new EventEmitter<CatModalEvent>();
-    isAddCatButtonDisabled!: boolean;
 
     goToCat(cat: Cat): void {
-        console.log('Go to cat: ', cat);
         const event = <CatNavigationEvent>{ cat: cat, path: `/cats/${cat.id}`};
         this.navigate.emit(event);
     }
 
     goToCatHandlers(cat: Cat): void {
-        console.log('Go to cat handlers: ', cat);
         const event = <CatNavigationEvent>{ path: `/cats/${cat.id}/handlers` };
         this.navigate.emit(event);
     }
 
     goToAddCat(): void {
-        console.log('Go to add cat');
+        this.isAddCatButtonDisabled = true;
         const event = <CatModalEvent>{};
         this.openModal.emit(event);
     }
