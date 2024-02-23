@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cat } from './cat';
+import { Cat } from './interfaces/cat';
 import { tap, catchError, map, combineLatest, shareReplay, Observable, BehaviorSubject, Subject, merge, scan, switchMap, of, take, from } from 'rxjs';
 import { ErrorService } from '../shared/error.service';
 import { HttpService } from '../shared/http.service';

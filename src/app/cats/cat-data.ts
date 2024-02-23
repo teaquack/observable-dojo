@@ -1,4 +1,4 @@
-import { Cat } from './cat';
+import { Cat } from './interfaces/cat';
 
 export class CatData {
 

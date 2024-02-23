@@ -1,0 +1,37 @@
+<h2 class="section-header">{{ type === 'user' ? 'Your Cats' : 'Other Cats' }}</h2>
+<ng-container *ngIf="cats$ | async as cats; else noCats">
+    <mat-card class="card inner-card" *ngFor="let cat of cats">
+        <mat-card-header class="card-header">
+            <mat-card-title class="card-title">{{ cat.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-body">
+            <p class="card-text"><strong>Breed:</strong> {{ cat.breed }}</p>
+            <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
+            <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
+            <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
+            <button type="button" mat-raised-button color="accent" class="card-button" (click)="goToCat(cat)">
+                See Cat
+            </button>
+            <button type="button" mat-raised-button class="card-button" (click)="goToCatHandlers(cat)">
+                Handlers
+            </button>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="card inner-card">
+        <div class="add-cat-container">
+            <button mat-raised-button class="card-button add-cat-button light-dojo-button custom-button"
+                [disabled]="isAddCatButtonDisabled" (click)="goToAddCat()">
+                + New Cat
+            </button>
+        </div>
+    </mat-card>
+    <!-- <div class="alert alert-danger" *ngIf="errorMessage$ | async as errorMessage">
+        {{ errorMessage }}
+    </div> -->
+</ng-container>
+
+<ng-template #noCats>
+    <mat-card-content>
+        <p class="no-cats-text">There are no cats 😿</p>
+    </mat-card-content>
+</ng-template>

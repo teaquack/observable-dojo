@@ -1,4 +1,4 @@
-import { Handler } from "../handlers/handler";
+import { Handler } from "../../handlers/handler";
 
 export interface Cat {
     id: number;

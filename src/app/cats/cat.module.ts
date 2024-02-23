@@ -6,12 +6,14 @@ import { CatDetailsComponent } from './cat-details/cat-details.component';
 import { CatRoutingModule } from './cat-routing.module';
 import { CreateCatComponent } from './create-cat/create-cat.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CatListComponent } from './cat-list/cat-list.component';
 
 @NgModule({
     declarations: [
         CatsComponent,
         CatDetailsComponent,
-        CreateCatComponent
+        CreateCatComponent,
+        CatListComponent
     ],
     imports: [
         CommonModule,

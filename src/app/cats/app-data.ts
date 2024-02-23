@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Cat } from './cat';
+import { Cat } from './interfaces/cat';
 import { CatData } from './cat-data';
 
 export class AppData implements InMemoryDbService {
