@@ -9,15 +9,15 @@
             <p class="card-text"><strong>Color:</strong> {{ cat.color }}</p>
             <p class="card-text"><strong>Age:</strong> {{ cat.age }}</p>
             <p class="card-text"><strong>Birthdate:</strong> {{ cat.birthdate | date }}</p>
-            <button type="button" mat-raised-button color="accent" class="card-button" (click)="goToCat(cat)">
+            <button *ngIf="this.allowInteraction" type="button" mat-raised-button color="accent" class="card-button" (click)="goToCat(cat)">
                 See Cat
             </button>
-            <button type="button" mat-raised-button class="card-button" (click)="goToCatHandlers(cat)">
+            <button *ngIf="this.allowInteraction" type="button" mat-raised-button class="card-button" (click)="goToCatHandlers(cat)">
                 Handlers
             </button>
         </mat-card-content>
     </mat-card>
-    <mat-card class="card inner-card">
+    <mat-card class="card inner-card" *ngIf="this.allowInteraction">
         <div class="add-cat-container">
             <button mat-raised-button class="card-button add-cat-button light-dojo-button custom-button"
                 [disabled]="isAddCatButtonDisabled" (click)="goToAddCat()">

@@ -10,9 +10,10 @@ import { CatModalEvent, CatNavigationEvent } from '../interfaces/cat-list-event'
 export class CatListComponent {
     @Input() cats$!: Observable<Cat[]>;
     @Input() type!: string;
-    @Input() isAddCatButtonDisabled!: boolean;
+    @Input() allowInteraction!: boolean;
     @Output() navigate: EventEmitter<CatNavigationEvent> = new EventEmitter<CatNavigationEvent>();
     @Output() openModal: EventEmitter<CatModalEvent> = new EventEmitter<CatModalEvent>();
+    isAddCatButtonDisabled!: boolean;
 
     goToCat(cat: Cat): void {
         console.log('Go to cat: ', cat);

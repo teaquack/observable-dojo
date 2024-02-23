@@ -8,8 +8,17 @@
     </mat-card-header>
 
     <div class="card-body outer-card-body">
-        <dojo-cat-list class='ignore-tag' [cats$]="userCats$" [type]="'user'" (navigate)="onNavigate($event)"
-            (openModal)="onOpenModal($event)"></dojo-cat-list>
-        <dojo-cat-list class='ignore-tag' [cats$]="otherCats$" [type]="'other'"></dojo-cat-list>
+        <dojo-cat-list class='ignore-tag'
+            [cats$]="userCats$"
+            [type]="'user'"
+            [allowInteraction]="true"
+            (navigate)="onNavigate($event)"
+            (openModal)="onOpenModal($event)">
+        </dojo-cat-list>
+        <dojo-cat-list class='ignore-tag' 
+            [cats$]="otherCats$"
+            [allowInteraction]="false"
+            [type]="'other'">
+        </dojo-cat-list>
     </div>
 </mat-card>
